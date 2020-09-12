@@ -1,0 +1,17 @@
+<p>login works!</p>
+
+<div class="title-div">
+  <h2 class="title">Login</h2>
+</div>
+<div class="form-login">
+  <form [formGroup]="loginForm" (ngSubmit)="btnLogin(loginForm.value)">
+    <h2>User</h2>
+    <input formControlName="user" type="email" />
+    <h2>Password</h2>
+    <input formControlName="password" type="password" />
+    <button [disabled]="loginForm.invalid" type="submit">Registrar</button>
+  </form>
+</div>
+<div class="footer">
+  <div><img class="img-login" src="assets/imgs/img2.png" alt="img" /></div>
+</div>
