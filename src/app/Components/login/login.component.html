@@ -5,9 +5,10 @@
 </div>
 <div class="form-login">
   <form [formGroup]="loginForm" (ngSubmit)="btnLogin(loginForm.value)">
-    <h2>User</h2>
+    <h2>User bien o que</h2>
+    <h4>Hiiiiii</h4>
     <input formControlName="user" type="email" />
-    <h2>Password</h2>
+    <h2>Password hola mundito</h2>
     <input formControlName="password" type="password" />
     <button [disabled]="loginForm.invalid" type="submit">Registrar</button>
   </form>
