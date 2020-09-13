@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ihouse-818ae": {
+      "hosting": {
+        "IHouse": [
+          "ihouse-818ae"
+        ]
+      }
+    }
+  }
+}
