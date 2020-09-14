@@ -1,3 +1,12 @@
-<p>navbar works!</p>
-<a routerLink="navbar">Navbar</a>
-<a routerLink="footer">Footer</a>
+<div class="navbar">
+  <nav class="nav">
+    <div>
+      <p>Logo</p>
+    </div>
+    <div class="links">
+      <a class="link" routerLink="/register">Register</a>
+      <a class="link" routerLink="/login">Login</a>
+      <button (click)="logout()">salir</button>
+    </div>
+  </nav>
+</div>

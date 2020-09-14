@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,8 @@ import { LoginPgComponent } from './Pgs/login-pg/login-pg.component';
 import { RegisterPgComponent } from './Pgs/register-pg/register-pg.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { PageNotFoundComponent } from './Pgs/page-not-found/page-not-found.component';
+import { StartComponent } from './Pgs/start/start.component';
+import { RecommendationsComponent } from './Pgs/recommendations/recommendations.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import { PageNotFoundComponent } from './Pgs/page-not-found/page-not-found.compo
     RegisterPgComponent,
     FooterComponent,
     PageNotFoundComponent,
+    StartComponent,
+    RecommendationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,7 @@ import { PageNotFoundComponent } from './Pgs/page-not-found/page-not-found.compo
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

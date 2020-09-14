@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -11,7 +12,11 @@ import { AuthService } from '../../Services/auth.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private builder: FormBuilder, private authService: AuthService) {
+  constructor(
+    private builder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.builder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -24,16 +29,12 @@ export class LoginComponent implements OnInit {
         .login(values.email, values.password)
         .then(() => {
           console.log('Usuario correcto');
+          this.router.navigate(['/home']);
         })
         .catch(() => {
           alert('no es valido');
         });
     }
-  }
-
-  // tslint:disable-next-line: typedef
-  logout() {
-    this.authService.logout();
   }
 
   ngOnInit(): void {}

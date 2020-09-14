@@ -19,7 +19,7 @@ export class AuthService {
 
   // tslint:disable-next-line: typedef
   logout() {
-    this.afa.signOut();
+    return this.afa.signOut();
   }
 
   // tslint:disable-next-line: typedef

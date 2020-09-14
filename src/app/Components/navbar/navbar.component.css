@@ -1,0 +1,19 @@
+.navbar {
+  background: rgba(17, 0, 255, 0.671);
+  width: 100%;
+  height: 40px;
+}
+
+.nav {
+  width: 85%;
+  height: 100%;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link {
+  padding: 0px 5px;
+}
