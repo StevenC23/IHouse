@@ -1,21 +1,42 @@
-<p>register works!</p>
-
-<div class="title-div">
-  <h2 class="title">Register</h2>
-</div>
-<div class="form-login">
-  <form [formGroup]="registerForm" (ngSubmit)="btnRegister(registerForm.value)">
-    <h2>Email</h2>
-    <input formControlName="email" type="email" />
-    <h2>Name</h2>
-    <input formControlName="name" type="text" />
-    <h2>Password</h2>
-    <input formControlName="password" type="password" />
-    <h2>Password2</h2>
-    <input formControlName="passwordd" type="password" />
-    <button [disabled]="registerForm.invalid" type="submit">Registrar</button>
-  </form>
-</div>
-<div>
-  <!-- <div><img class="img-login" src="assets/imgs/img2.png" alt="img" /></div> -->
+<div class="register-div">
+  <div class="register-title">
+    <h1>Register</h1>
+  </div>
+  <div class="register-form">
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="btnRegister(registerForm.value)"
+    >
+      <h2 class="register-email">Email</h2>
+      <input
+        formControlName="email"
+        type="email"
+        placeholder="Personal or valid email"
+      />
+      <h2 class="register-name">Name</h2>
+      <input formControlName="name" type="text" placeholder="Name" />
+      <h2 class="register-pss">Password</h2>
+      <input
+        formControlName="password"
+        type="password"
+        placeholder="Password valid up 6 characters"
+      />
+      <h2 class="register-pss2">Password</h2>
+      <input
+        formControlName="passwordd"
+        type="password"
+        placeholder="Repeat password"
+      />
+      <button
+        class="register-btn"
+        [disabled]="registerForm.invalid"
+        type="submit"
+      >
+        Register
+      </button>
+    </form>
+  </div>
+  <div class="register-login-btn">
+    <a routerLink="/login">if you have an accountn, let's login</a>
+  </div>
 </div>
