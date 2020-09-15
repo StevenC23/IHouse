@@ -12,6 +12,9 @@
   align-items: center;
   margin-top: 20px;
 }
+.recommendations-img {
+  width: 300px;
+}
 
 .recommendations-img img {
   width: 300px;
