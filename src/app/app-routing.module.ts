@@ -8,6 +8,10 @@ import { RegisterPgComponent } from './Pgs/register-pg/register-pg.component';
 import { PageNotFoundComponent } from './Pgs/page-not-found/page-not-found.component';
 import { StartComponent } from './Pgs/start/start.component';
 import { RecommendationsComponent } from './Pgs/recommendations/recommendations.component';
+import { AdminComponent } from './Pgs/admin/admin.component';
+
+// Guards
+import { AdminGuard } from './Guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -30,6 +34,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterPgComponent,
+  },
+  {
+    path: 'admin',
+    canActivate: [AdminGuard],
+    component: AdminComponent,
   },
   {
     path: '**',

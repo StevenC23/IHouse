@@ -1,5 +1,7 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { User } from '../Model/user';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +26,18 @@ export class AuthService {
 
   // tslint:disable-next-line: typedef
   hasUser() {
+    console.log(this.afa.authState);
     return this.afa.authState;
+  }
+
+  // tslint:disable-next-line: typedef
+  isAuth() {
+    this.afa.onAuthStateChanged((user) => {
+      if (user) {
+        return true;
+      } else {
+        return false;
+      }
+    });
   }
 }

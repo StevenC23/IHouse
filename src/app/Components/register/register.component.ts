@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
       this.user.email = values.email;
       this.user.name = values.name;
       this.user.pss = values.password;
+      this.user.rol = 'ADMIN';
       this.userService.insertUser(this.user);
     }
   }
@@ -47,6 +48,7 @@ export class RegisterComponent implements OnInit {
     user.email = '';
     user.name = '';
     user.pss = '';
+    user.rol = '';
     this.user = user;
   }
 }

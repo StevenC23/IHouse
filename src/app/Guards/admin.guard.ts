@@ -24,8 +24,16 @@ export class AdminGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    // const validate = this.authService.isAuth();
+
+    // if (this.authService.isAuth().Observable()) {
+    //   return true;
+    // } else {
+    //   console.log('false');
+    //   return false;
+    // }
     return this.authService
       .hasUser()
-      .pipe(map((user) => (user === null ? false : false)));
+      .pipe(map((user) => (user === null ? false : true)));
   }
 }

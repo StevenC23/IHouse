@@ -20,6 +20,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { PageNotFoundComponent } from './Pgs/page-not-found/page-not-found.component';
 import { StartComponent } from './Pgs/start/start.component';
 import { RecommendationsComponent } from './Pgs/recommendations/recommendations.component';
+import { AdminComponent } from './Pgs/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { RecommendationsComponent } from './Pgs/recommendations/recommendations.
     PageNotFoundComponent,
     StartComponent,
     RecommendationsComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
