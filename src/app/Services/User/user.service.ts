@@ -4,6 +4,7 @@ import { User } from '../../Model/user';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { database } from 'firebase';
 
 @Injectable({
   providedIn: 'root',
@@ -21,13 +22,27 @@ export class UserService {
       .catch((err) => console.log(err));
   }
 
-  public findUsers(): Observable<User[]> {
+  findUsers(): Observable<User[]> {
     return this.db
       .collection('users')
       .snapshotChanges()
       .pipe(
         map((actions) => {
           return actions.map((a) => {
+            const data = a.payload.doc.data() as User;
+            return data;
+          });
+        })
+      );
+  }
+
+  findUserByEmail(email: string): Observable<any[]> {
+    return this.db
+      .collection('users', (ref) => ref.where('email', '==', email))
+      .snapshotChanges()
+      .pipe(
+        map((action) => {
+          return action.map((a) => {
             const data = a.payload.doc.data() as User;
             return data;
           });

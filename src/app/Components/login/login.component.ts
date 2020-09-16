@@ -34,13 +34,9 @@ export class LoginComponent implements OnInit {
         .then(() => {
           console.log('Usuario correcto');
           this.router.navigate(['/home']);
-          this.userService.findUsers().subscribe((data) => {
-            // tslint:disable-next-line: prefer-for-of
-            for (let index = 0; index < data.length; index++) {
-              const element = data[index];
-              console.log(element);
-            }
-            // localStorage.setItem('userType',this.userl
+          this.userService.findUserByEmail(values.email).subscribe((data) => {
+            const element = data[0];
+            console.log(element.name);
           });
         })
         .catch(() => {
