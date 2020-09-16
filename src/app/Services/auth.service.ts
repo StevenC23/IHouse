@@ -25,19 +25,8 @@ export class AuthService {
   }
 
   // tslint:disable-next-line: typedef
-  hasUser() {
+  hasUser(): Observable<any> {
     console.log(this.afa.authState);
     return this.afa.authState;
-  }
-
-  // tslint:disable-next-line: typedef
-  isAuth() {
-    this.afa.onAuthStateChanged((user) => {
-      if (user) {
-        return true;
-      } else {
-        return false;
-      }
-    });
   }
 }

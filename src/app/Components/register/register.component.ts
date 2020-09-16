@@ -31,10 +31,15 @@ export class RegisterComponent implements OnInit {
 
   btnRegister(values): void {
     if (this.registerForm.valid) {
-      this.authService.createUser(values.email, values.password).then(() => {
-        console.log(values.email + ' ' + values.password);
-        this.router.navigate(['/login']);
-      });
+      this.authService
+        .createUser(values.email, values.password)
+        .then(() => {
+          console.log(values.email + ' ' + values.password);
+          this.router.navigate(['/login']);
+        })
+        .catch((err) => {
+          alert(err);
+        });
       this.user.email = values.email;
       this.user.name = values.name;
       this.user.pss = values.password;

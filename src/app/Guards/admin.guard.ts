@@ -1,3 +1,5 @@
+import { UserService } from './../Services/User/user.service';
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -14,7 +16,11 @@ import { AuthService } from '../Services/auth.service';
   providedIn: 'root',
 })
 export class AdminGuard implements CanActivate {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -24,16 +30,6 @@ export class AdminGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // const validate = this.authService.isAuth();
-
-    // if (this.authService.isAuth().Observable()) {
-    //   return true;
-    // } else {
-    //   console.log('false');
-    //   return false;
-    // }
-    return this.authService
-      .hasUser()
-      .pipe(map((user) => (user === null ? false : true)));
+    return true;
   }
 }
