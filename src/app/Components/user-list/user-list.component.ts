@@ -9,12 +9,16 @@ import { UserService } from 'src/app/Services/User/user.service';
 })
 export class UserListComponent implements OnInit {
   userList: User[];
+  devicesList: any[];
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
     this.userService.findUsers().subscribe((data) => {
       this.userList = data;
+      this.devicesList = this.userList.map((user) => user.devices);
+      console.log(this.devicesList);
+
       console.log(this.userList);
     });
   }

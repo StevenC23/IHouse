@@ -1,7 +1,9 @@
 <p>user-list works!</p>
 <ul>
   <li *ngFor="let user of userList">
-    <h1>{{ user.devices }} -</h1>
-    <a class="link" routerLink="user-list">Ver dispositivos</a>
+    {{ user.email }}
+    <div *ngFor="let device of devicesList">
+      {{ device }}
+    </div>
   </li>
 </ul>
