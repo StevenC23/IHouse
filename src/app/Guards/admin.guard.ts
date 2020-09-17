@@ -8,7 +8,6 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { AuthService } from '../Services/auth.service';
 
@@ -33,6 +32,7 @@ export class AdminGuard implements CanActivate {
     if (localStorage.getItem('rol') === 'ADMIN') {
       return true;
     } else {
+      this.router.navigate(['./login']);
       return false;
     }
   }
