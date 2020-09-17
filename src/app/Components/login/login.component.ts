@@ -33,10 +33,18 @@ export class LoginComponent implements OnInit {
         .login(values.email, values.password)
         .then(() => {
           console.log('Usuario correcto');
-          this.router.navigate(['/home']);
           this.userService.findUserByEmail(values.email).subscribe((data) => {
             const element = data[0];
-            console.log(element.name);
+            console.log(element.rol);
+            localStorage.setItem('email', element.email);
+            localStorage.setItem('rol', element.rol);
+            if (element.rol === 'ADMIN') {
+              console.log(element.rol);
+              console.log('Redirecciona a admin');
+              this.router.navigate(['/admin']);
+            } else {
+              this.router.navigate(['/home']);
+            }
           });
         })
         .catch(() => {

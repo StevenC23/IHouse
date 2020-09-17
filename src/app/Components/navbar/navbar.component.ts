@@ -18,6 +18,8 @@ export class NavbarComponent implements OnInit {
       .logout()
       .then(() => {
         console.log('Usuario deslogueado');
+        localStorage.removeItem('email');
+        localStorage.removeItem('rol');
         this.router.navigate(['/login']);
       })
       .catch(() => {

@@ -14,7 +14,11 @@ export class StartComponent implements OnInit {
     this.authService.hasUser().subscribe((data) => {
       if (data) {
         console.log('logueado');
-        this.router.navigate(['/home']);
+        if (localStorage.getItem('rol') === 'ADMIN') {
+          this.router.navigate(['/admin']);
+        } else {
+          this.router.navigate(['/home']);
+        }
       } else {
         console.log('deslogueado');
       }

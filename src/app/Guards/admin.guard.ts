@@ -30,6 +30,10 @@ export class AdminGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return true;
+    if (localStorage.getItem('rol') === 'ADMIN') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

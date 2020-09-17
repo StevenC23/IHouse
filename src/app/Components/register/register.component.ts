@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
       this.user.email = values.email;
       this.user.name = values.name;
       this.user.pss = values.password;
-      this.user.rol = 'ADMIN';
+      this.user.rol = 'USER';
       this.userService.insertUser(this.user);
     }
   }
