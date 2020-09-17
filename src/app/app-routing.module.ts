@@ -10,6 +10,9 @@ import { StartComponent } from './Pgs/start/start.component';
 import { RecommendationsComponent } from './Pgs/recommendations/recommendations.component';
 import { AdminComponent } from './Pgs/admin/admin.component';
 
+// Components
+import { UserListComponent } from './Components/user-list/user-list.component';
+
 // Guards
 import { AdminGuard } from './Guards/admin.guard';
 
@@ -39,6 +42,12 @@ const routes: Routes = [
     path: 'admin',
     canActivate: [AdminGuard],
     component: AdminComponent,
+    children: [
+      {
+        path: 'user-list',
+        component: UserListComponent,
+      },
+    ],
   },
   {
     path: '**',

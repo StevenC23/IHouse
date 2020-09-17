@@ -3,4 +3,5 @@ export class User {
   name: string;
   pss: string;
   rol: string;
+  devices: any[];
 }

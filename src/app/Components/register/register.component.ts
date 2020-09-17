@@ -44,6 +44,13 @@ export class RegisterComponent implements OnInit {
       this.user.name = values.name;
       this.user.pss = values.password;
       this.user.rol = 'USER';
+      this.user.devices = [
+        {
+          id: 1,
+          name: 'device1',
+          location: 'house of client',
+        },
+      ];
       this.userService.insertUser(this.user);
     }
   }
@@ -54,6 +61,7 @@ export class RegisterComponent implements OnInit {
     user.name = '';
     user.pss = '';
     user.rol = '';
+    user.devices = [];
     this.user = user;
   }
 }

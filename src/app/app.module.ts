@@ -21,6 +21,7 @@ import { PageNotFoundComponent } from './Pgs/page-not-found/page-not-found.compo
 import { StartComponent } from './Pgs/start/start.component';
 import { RecommendationsComponent } from './Pgs/recommendations/recommendations.component';
 import { AdminComponent } from './Pgs/admin/admin.component';
+import { UserListComponent } from './Components/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AdminComponent } from './Pgs/admin/admin.component';
     StartComponent,
     RecommendationsComponent,
     AdminComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
