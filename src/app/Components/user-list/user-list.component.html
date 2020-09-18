@@ -1,9 +1,17 @@
 <p>user-list works!</p>
+
 <ul>
   <li *ngFor="let user of userList">
-    {{ user.email }}
-    <div *ngFor="let device of devicesList">
-      {{ device }}
-    </div>
+    <div
+      *ngIf="user.devices.length === 0; then noDivices; else yesDevices"
+    ></div>
+    <ng-template #noDivices>
+      <div>No devices</div>
+    </ng-template>
+    <ng-template #yesDevices>
+      <div *ngFor="let device of user.devices">
+        {{ device.id }}
+      </div>
+    </ng-template>
   </li>
 </ul>
