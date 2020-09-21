@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../Model/user';
-import { Device } from '../../Model/device';
 import { UserService } from '../../Services/User/user.service';
 
 import { AuthService } from '../../Services/auth.service';
@@ -52,10 +51,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     const user = {} as User;
-    // user.email = '';
-    // user.name = '';
-    // user.pss = '';
-    // user.rol = '';
     this.user = user;
   }
 }

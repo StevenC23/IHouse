@@ -4,15 +4,12 @@ import { User } from '../../Model/user';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { database } from 'firebase';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   constructor(private db: AngularFirestore) {}
-
-  selecUser: User = new User();
 
   // tslint:disable-next-line: typedef
   insertUser(user: User): void {

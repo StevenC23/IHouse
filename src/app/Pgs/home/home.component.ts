@@ -11,13 +11,13 @@ export class HomeComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.authService.hasUser().subscribe((data) => {
-      if (data) {
-        console.log('logueado, entra');
-      } else {
-        console.log('deslogueado, logueate porfavor');
-        this.router.navigate(['/login']);
-      }
-    });
+    // this.authService.hasUser().subscribe((data) => {
+    //   if (data) {
+    //     console.log('logueado, entra');
+    //   } else {
+    //     console.log('deslogueado, logueate porfavor');
+    //     this.router.navigate(['/login']);
+    //   }
+    // });
   }
 }

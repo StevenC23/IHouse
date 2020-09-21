@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
+  Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LogueadoGuard implements CanActivate {
+export class DeslogueadoGuard implements CanActivate {
   constructor(private router: Router) {}
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -21,16 +21,19 @@ export class LogueadoGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // return true;
     if (
       localStorage.getItem('rol') === 'ADMIN' ||
       localStorage.getItem('rol') === 'USER'
     ) {
-      return true;
+      if (localStorage.getItem('rol') === 'ADMIN') {
+        this.router.navigate(['./admin']);
+        return false;
+      } else {
+        this.router.navigate(['./home']);
+        return false;
+      }
     } else {
-      console.log('No esta logueado porfavor loguese');
-      this.router.navigate(['./login']);
-      return false;
+      return true;
     }
   }
 }

@@ -22,6 +22,9 @@ import { StartComponent } from './Pgs/start/start.component';
 import { RecommendationsComponent } from './Pgs/recommendations/recommendations.component';
 import { AdminComponent } from './Pgs/admin/admin.component';
 import { UserListComponent } from './Components/user-list/user-list.component';
+import { DevicesStockComponent } from './Components/devices-stock/devices-stock.component';
+import { DevicesListComponent } from './Components/devices-list/devices-list.component';
+import { DevicesAggComponent } from './Components/devices-agg/devices-agg.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { UserListComponent } from './Components/user-list/user-list.component';
     RecommendationsComponent,
     AdminComponent,
     UserListComponent,
+    DevicesStockComponent,
+    DevicesListComponent,
+    DevicesAggComponent,
   ],
   imports: [
     BrowserModule,

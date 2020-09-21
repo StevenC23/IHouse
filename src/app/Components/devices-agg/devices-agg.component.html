@@ -1,0 +1,15 @@
+<h2>Device agg</h2>
+<div>
+  <form
+    [formGroup]="registerDeviceForm"
+    (ngSubmit)="btnDevicesAgg(registerDeviceForm.value)"
+  >
+    <h3>Id</h3>
+    <input type="text" formControlName="id" />
+    <h3>Location</h3>
+    <input type="text" formControlName="location" />
+    <h3>Name</h3>
+    <input type="text" formControlName="name" />
+    <button [disabled]="registerDeviceForm.invalid" type="submit">Agg</button>
+  </form>
+</div>
