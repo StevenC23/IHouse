@@ -25,6 +25,7 @@ export class DeviceService {
         map((actions) => {
           return actions.map((a) => {
             const data = a.payload.doc.data() as Device;
+            data.uid = a.payload.doc.id;
             return data;
           });
         })
@@ -46,11 +47,6 @@ export class DeviceService {
   }
 
   deleteDevice(id: string): void {
-    if (this.findDeviceById(id)) {
-      console.log(this.findDeviceById(id));
-      console.log('existe');
-    } else {
-      console.log('no existe');
-    }
+    this.db.doc(`devices/${id}`).delete();
   }
 }
