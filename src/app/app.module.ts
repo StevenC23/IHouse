@@ -25,6 +25,7 @@ import { UserListComponent } from './Components/user-list/user-list.component';
 import { DevicesStockComponent } from './Components/devices-stock/devices-stock.component';
 import { DevicesListComponent } from './Components/devices-list/devices-list.component';
 import { DevicesAggComponent } from './Components/devices-agg/devices-agg.component';
+import { UserDevicesListComponent } from './Components/user-devices-list/user-devices-list.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { DevicesAggComponent } from './Components/devices-agg/devices-agg.compon
     DevicesStockComponent,
     DevicesListComponent,
     DevicesAggComponent,
+    UserDevicesListComponent,
   ],
   imports: [
     BrowserModule,

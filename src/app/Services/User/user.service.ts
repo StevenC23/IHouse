@@ -33,7 +33,7 @@ export class UserService {
       );
   }
 
-  findUserByEmail(email: string): Observable<any[]> {
+  findUserByEmail(email: string): Observable<any> {
     return this.db
       .collection('users', (ref) => ref.where('email', '==', email))
       .snapshotChanges()
