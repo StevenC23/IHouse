@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
             console.log(element.rol);
             localStorage.setItem('email', element.email);
             localStorage.setItem('rol', element.rol);
+            localStorage.setItem('name', element.name);
             if (element.rol === 'ADMIN') {
               console.log(element.rol);
               console.log('Redirecciona a admin');

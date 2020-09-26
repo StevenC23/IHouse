@@ -8,16 +8,25 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(private authService: AuthService, private router: Router) {}
+  name: string;
 
-  ngOnInit(): void {
-    // this.authService.hasUser().subscribe((data) => {
-    //   if (data) {
-    //     console.log('logueado, entra');
-    //   } else {
-    //     console.log('deslogueado, logueate porfavor');
-    //     this.router.navigate(['/login']);
-    //   }
-    // });
+  constructor(private authService: AuthService, private router: Router) {
+    this.name = localStorage.getItem('name');
+  }
+
+  ngOnInit(): void {}
+
+  logout() {
+    this.authService
+      .logout()
+      .then(() => {
+        console.log('Usuario deslogueado');
+        localStorage.removeItem('email');
+        localStorage.removeItem('rol');
+        this.router.navigate(['/login']);
+      })
+      .catch(() => {
+        alert('no se pudo desloguear');
+      });
   }
 }

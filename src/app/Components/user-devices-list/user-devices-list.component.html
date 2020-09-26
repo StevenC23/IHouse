@@ -1,26 +1,22 @@
-<p>Listta de dispositivos de este usuraio</p>
-<ul>
-  <li *ngFor="let u of user">
-    <div *ngIf="u.devices.length === 0; then noDevices; else devices"></div>
-    <ng-template #noDevices>
-      <p>No tiene dispositivos asociados</p>
-    </ng-template>
-    <ng-template #devices>
-      <div *ngFor="let device of u.devices">
-        {{ device.id }}
+<div class="user-devices-div">
+  <div class="user-devices-title">
+    <h3>Devices</h3>
+    <p>Some of you conected devices</p>
+  </div>
+  <ul class="user-devices-list">
+    <li *ngFor="let u of user">
+      <div class="user-devices-img">
+        <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
       </div>
-    </ng-template>
-  </li>
-</ul>
-
-<!-- <div *ngIf="user.devices.length === 0; then noDivices; else yesDevices"></div>
-<ng-template #noDivices>
-  <div class="user-list-devices">
-    <h2>No devices</h2>
-  </div>
-</ng-template>
-<ng-template #yesDevices>
-  <div *ngFor="let device of user.devices" class="user-list-devices">
-    <h2>{{ device.id }}</h2>
-  </div>
-</ng-template> -->
+      <div *ngIf="u.devices.length === 0; then noDevices; else devices"></div>
+      <ng-template #noDevices>
+        <p>No tiene dispositivos asociados</p>
+      </ng-template>
+      <ng-template #devices>
+        <div *ngFor="let device of u.devices">
+          {{ device.id }}
+        </div>
+      </ng-template>
+    </li>
+  </ul>
+</div>
