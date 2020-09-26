@@ -9,17 +9,23 @@
 }
 
 .user-devices-list {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   margin-top: 50px;
   display: flex;
+}
+.user-devices-list-div {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  scroll-behavior: smooth;
 }
 
 .user-devices-list li {
   padding: 5px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   list-style: none;
   width: 150px;
-  height: 200px;
+  height: 250px;
   margin: 5px;
   display: flex;
   flex-direction: column;
@@ -28,9 +34,66 @@
 
 .user-devices-img {
   width: 100px;
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
 }
 
 .user-devices-img img {
   width: 100%;
+}
+
+.user-devices-list-name {
+  margin-top: 10px;
+}
+
+.user-devices-list-action {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid green; */
+}
+
+.user-devices-list-action .action {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+}
+
+.bg {
+  width: 70%;
+  height: 30px;
+  /* background: #000; */
+  border: 2px solid black;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  /* justify-content: flex-end; */
+}
+
+.circle {
+  width: 26px;
+  border-radius: 50%;
+  height: 26px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: red;
+  /* display: flex;
+  align-self: flex-end; */
+  transition: all 0.3s;
+  animation: all 0.3s;
+}
+.circle-active {
+  transform: translateX(40px);
+  background: green;
+}
+
+.circle-color {
+  margin-top: 10px;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.5);
 }

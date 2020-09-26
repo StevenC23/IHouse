@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Device } from 'src/app/Model/device';
 import { User } from 'src/app/Model/user';
 import { UserService } from 'src/app/Services/User/user.service';
+import '../../../assets/ResourcesJs/interactions';
 
 @Component({
   selector: 'app-user-devices-list',

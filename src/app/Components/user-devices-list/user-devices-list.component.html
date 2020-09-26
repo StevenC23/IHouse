@@ -4,19 +4,35 @@
     <p>Some of you conected devices</p>
   </div>
   <ul class="user-devices-list">
-    <li *ngFor="let u of user">
-      <div class="user-devices-img">
-        <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
-      </div>
+    <div *ngFor="let u of user" class="user-devices-list-div">
       <div *ngIf="u.devices.length === 0; then noDevices; else devices"></div>
       <ng-template #noDevices>
         <p>No tiene dispositivos asociados</p>
       </ng-template>
       <ng-template #devices>
-        <div *ngFor="let device of u.devices">
-          {{ device.id }}
-        </div>
+        <li *ngFor="let device of u.devices">
+          <div class="user-devices-img">
+            <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
+          </div>
+          <div class="user-devices-list-name">
+            <h2>{{ device.name }}</h2>
+          </div>
+          <div class="user-devices-list-action">
+            <div class="action">
+              <div class="bg">
+                <div class="circle" id="circle"></div>
+              </div>
+            </div>
+            <div class="action">
+              <div class="circle-color"></div>
+            </div>
+          </div>
+        </li>
       </ng-template>
-    </li>
+    </div>
+
+    <!-- <li *ngFor="let u of user">
+      
+    </li> -->
   </ul>
 </div>
