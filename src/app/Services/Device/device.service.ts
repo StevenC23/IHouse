@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class DeviceService {
+  d: Device;
   constructor(private db: AngularFirestore) {}
 
   insertDevice(device: Device): void {
@@ -45,6 +46,12 @@ export class DeviceService {
           });
         })
       );
+  }
+
+  findDeviceByIdd(id: string): Observable<any> {
+    return this.db
+      .collection('devices', (ref) => ref.where('id', '==', id))
+      .valueChanges();
   }
 
   deleteDevice(id: string): void {
