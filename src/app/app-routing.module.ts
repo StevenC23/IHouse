@@ -15,6 +15,7 @@ import { UserListComponent } from './Components/user-list/user-list.component';
 import { DevicesStockComponent } from './Components/devices-stock/devices-stock.component';
 import { DevicesListComponent } from './Components/devices-list/devices-list.component';
 import { DevicesAggComponent } from './Components/devices-agg/devices-agg.component';
+import { DevicesAssignComponent } from './Components/devices-assign/devices-assign.component';
 // Guards
 import { AdminGuard } from './Guards/admin.guard';
 import { LogueadoGuard } from './Guards/logueado.guard';
@@ -67,6 +68,10 @@ const routes: Routes = [
           {
             path: 'devices-agg',
             component: DevicesAggComponent,
+          },
+          {
+            path: 'devices-assign',
+            component: DevicesAssignComponent,
           },
         ],
       },

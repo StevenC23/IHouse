@@ -40,6 +40,7 @@ export class DeviceService {
         map((action) => {
           return action.map((a) => {
             const data = a.payload.doc.data() as Device;
+            data.uid = a.payload.doc.id;
             return data;
           });
         })

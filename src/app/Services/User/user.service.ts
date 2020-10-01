@@ -1,15 +1,24 @@
+import { DeviceService } from './../Device/device.service';
 import { Injectable } from '@angular/core';
 import { User } from '../../Model/user';
 
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Device } from 'src/app/Model/device';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private db: AngularFirestore) {}
+  devicePro: Device;
+  deviceProUid: string;
+  listDeviceProv: Device[];
+
+  constructor(
+    private db: AngularFirestore,
+    private deviceService: DeviceService
+  ) {}
 
   // tslint:disable-next-line: typedef
   insertUser(user: User): void {
@@ -17,6 +26,48 @@ export class UserService {
       .collection('users')
       .add(user)
       .catch((err) => console.log(err));
+  }
+
+  insertDeviceUser(uid: string, device: string): void {
+    console.log('busco device');
+    this.deviceService.findDeviceById(device).subscribe((d) => {
+      this.devicePro = d[0];
+      console.log('devicepro =device encontrado');
+
+      this.db
+        .collection('users')
+        .doc(uid)
+        .get()
+        .subscribe((r) => {
+          console.log('me susbcribo a users');
+
+          if (r.data().devices) {
+            console.log('si hay data asigne');
+
+            this.listDeviceProv = r.data().devices;
+          } else {
+            console.log('si no hay data asigne []');
+            this.listDeviceProv = [];
+          }
+          this.listDeviceProv.push(this.devicePro);
+          console.table(this.listDeviceProv);
+
+          this.db
+            .collection('users')
+            .doc(uid)
+            .update({
+              devices: this.listDeviceProv,
+            })
+            .then(() => {
+              console.log('Correcto');
+              console.log('borro documento');
+
+              this.deviceService.deleteDevice(d[0].uid);
+              console.log('documento borrado');
+            })
+            .catch((e) => console.log('error', e));
+        });
+    });
   }
 
   findUsers(): Observable<User[]> {
@@ -27,6 +78,7 @@ export class UserService {
         map((actions) => {
           return actions.map((a) => {
             const data = a.payload.doc.data() as User;
+            data.uid = a.payload.doc.id;
             return data;
           });
         })

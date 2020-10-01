@@ -1,0 +1,25 @@
+<p>devices-assign works!</p>
+<div>
+  <form
+    [formGroup]="assignDeviceForm"
+    (ngSubmit)="btnAssignDevice(assignDeviceForm.value)"
+  >
+    <h3>User</h3>
+    <!-- id="user" -->
+    <select formControlName="user">
+      <option *ngFor="let u of users" value="{{ u.uid }}">
+        {{ u.email }}
+      </option>
+    </select>
+
+    <select formControlName="device">
+      <option *ngFor="let d of devices" value="{{ d.id }}">
+        {{ d.id }}
+      </option>
+    </select>
+
+    <button [disabled]="assignDeviceForm.invalid" type="submit">
+      assign device
+    </button>
+  </form>
+</div>

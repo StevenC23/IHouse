@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/Model/user';
 import { UserService } from 'src/app/Services/User/user.service';
-import '../../../assets/ResourcesJs/interactions';
+// import '../../../assets/ResourcesJs/interactions';
 
 @Component({
   selector: 'app-user-devices-list',
@@ -21,4 +21,9 @@ export class UserDevicesListComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  // tslint:disable-next-line: typedef
+  clickk(id: string) {
+    console.log('click ' + id);
+  }
 }
