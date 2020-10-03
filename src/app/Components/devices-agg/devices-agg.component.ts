@@ -2,6 +2,7 @@ import { DeviceService } from './../../Services/Device/device.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Device } from 'src/app/Model/device';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-devices-agg',
@@ -17,17 +18,17 @@ export class DevicesAggComponent implements OnInit {
     private deviceService: DeviceService
   ) {
     this.registerDeviceForm = this.builder.group({
-      id: ['', Validators.required],
-      location: ['', Validators.required],
-      name: ['', Validators.required],
+      id: [uuid.v4()],
+      iplocal: ['', Validators.required],
+      state: ['false', Validators.required],
     });
   }
 
   btnDevicesAgg(values): void {
     if (this.registerDeviceForm.valid) {
       this.device.id = values.id;
-      this.device.location = values.location;
-      this.device.name = values.name;
+      this.device.iplocal = values.iplocal;
+      this.device.state = values.state;
       this.deviceService.insertDevice(this.device);
       console.log('Dispositivo guardado en stock');
     }

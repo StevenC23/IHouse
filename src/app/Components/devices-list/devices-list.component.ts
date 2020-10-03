@@ -18,6 +18,7 @@ export class DevicesListComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   deleteDevice(id: string) {
     this.deviceService.deleteDevice(id);
   }

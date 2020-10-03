@@ -61,7 +61,7 @@ export class UserService {
               .then(() => {
                 console.log('Correcto');
                 console.log('borro documento');
-                this.deviceService.deleteDevice(d[0].uid);
+                this.deviceService.deleteDevice(d[0].id);
                 console.log('documento borrado');
               })
               .catch((e) => console.log('error', e));

@@ -2,8 +2,8 @@
   <h2>stock</h2>
   <ul>
     <li *ngFor="let device of deviceList">
-      {{ device.uid }}
-      <button (click)="deleteDevice(device.uid)">Delete</button>
+      {{ device.iplocal }}
+      <button (click)="deleteDevice(device.id)">Delete</button>
     </li>
   </ul>
 </div>

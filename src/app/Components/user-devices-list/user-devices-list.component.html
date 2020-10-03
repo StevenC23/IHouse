@@ -18,17 +18,17 @@
             <h2>{{ device.name }}</h2>
           </div>
           <div class="user-devices-list-action">
-            <div class="action">
+            <!-- <div class="action">
               <div class="bg">
                 <div
                   class="circle"
                   id="circle"
-                  (click)="clickk(device.id)"
+                  (click)="clickk(device.iplocal)"
                 ></div>
               </div>
-            </div>
+            </div> -->
             <div class="action">
-              <div class="circle-color"></div>
+              <div class="circle-color" (click)="clickk(device.iplocal)"></div>
             </div>
           </div>
         </li>

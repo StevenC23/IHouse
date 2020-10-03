@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
           console.log('Usuario correcto');
           this.userService.findUserByEmail(values.email).subscribe((data) => {
             const element = data[0];
-            console.log(element.rol);
             localStorage.setItem('email', element.email);
             localStorage.setItem('rol', element.rol);
             localStorage.setItem('name', element.name);
