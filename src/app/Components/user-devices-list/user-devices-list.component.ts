@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/Model/user';
 import { UserService } from 'src/app/Services/User/user.service';
 // import '../../../assets/ResourcesJs/interactions';
@@ -10,17 +11,21 @@ import { UserService } from 'src/app/Services/User/user.service';
 })
 export class UserDevicesListComponent implements OnInit {
   user: User;
+  private subFindUserByEmail: Subscription;
 
   constructor(private userService: UserService) {
-    this.userService
+    this.subFindUserByEmail = this.userService
       .findUserByEmail(localStorage.getItem('email'))
       .subscribe((data) => {
         this.user = data;
-        console.log(this.user);
       });
   }
 
   ngOnInit(): void {}
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnDestroy(): void {
+    this.subFindUserByEmail.unsubscribe();
+  }
 
   // tslint:disable-next-line: typedef
   clickk(id: string) {

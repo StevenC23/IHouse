@@ -1,7 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 
 import { AuthService } from '../../Services/auth.service';
 import { UserService } from 'src/app/Services/User/user.service';
@@ -15,7 +14,6 @@ import { User } from 'src/app/Model/user';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   userlist: User[];
-  public sub: Subscription;
 
   constructor(
     private builder: FormBuilder,
@@ -56,4 +54,5 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  // tslint:disable-next-line: use-lifecycle-interface
 }

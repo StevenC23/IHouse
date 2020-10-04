@@ -3,4 +3,5 @@ export class Device {
   id: string;
   iplocal: string;
   state: string;
+  type: string;
 }

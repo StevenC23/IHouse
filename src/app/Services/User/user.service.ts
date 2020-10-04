@@ -28,25 +28,19 @@ export class UserService {
       .catch((err) => console.log(err));
   }
 
-  insertDeviceUser(uid: string, device: string): void {
-    console.log('busco device');
+  insertDeviceUser(uid: string, device: string, iplocal: string): void {
     this.deviceService.findDeviceById(device).subscribe((d) => {
       this.devicePro = d[0];
       if (d[0]) {
-        console.log('devicepro =device encontrado');
+        this.devicePro.iplocal = iplocal;
         this.db
           .collection('users')
           .doc(uid)
           .get()
           .subscribe((r) => {
-            console.log('me susbcribo a users');
-
             if (r.data().devices) {
-              console.log('si hay data asigne');
-
               this.listDeviceProv = r.data().devices;
             } else {
-              console.log('si no hay data asigne []');
               this.listDeviceProv = [];
             }
             this.listDeviceProv.push(this.devicePro);
@@ -62,7 +56,6 @@ export class UserService {
                 console.log('Correcto');
                 console.log('borro documento');
                 this.deviceService.deleteDevice(d[0].id);
-                console.log('documento borrado');
               })
               .catch((e) => console.log('error', e));
           });

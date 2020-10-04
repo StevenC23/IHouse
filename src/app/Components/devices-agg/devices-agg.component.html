@@ -4,8 +4,13 @@
     [formGroup]="registerDeviceForm"
     (ngSubmit)="btnDevicesAgg(registerDeviceForm.value)"
   >
-    <h3>Id</h3>
-    <input type="text" formControlName="iplocal" />
+    <!-- <h3>Id</h3>
+    <input type="text" formControlName="iplocal" /> -->
+    <h3>Type</h3>
+    <select formControlName="type">
+      <option value="switch">Switch</option>
+      <option value="outlet">Outlet</option>
+    </select>
     <!-- <h3>Location</h3>
     <input type="text" formControlName="location" />
     <h3>Name</h3>

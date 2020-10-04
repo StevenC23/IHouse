@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Device } from 'src/app/Model/device';
 import * as uuid from 'uuid';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-devices-agg',
@@ -15,13 +16,19 @@ export class DevicesAggComponent implements OnInit {
 
   constructor(
     private builder: FormBuilder,
-    private deviceService: DeviceService
+    private deviceService: DeviceService,
+    private router: Router
   ) {
     this.registerDeviceForm = this.builder.group({
-      id: [uuid.v4()],
-      iplocal: ['', Validators.required],
+      id: [this.idAssign()],
+      iplocal: ['Not Assign'],
       state: ['false', Validators.required],
+      type: ['', Validators.required],
     });
+  }
+
+  idAssign(): string {
+    return uuid.v4();
   }
 
   btnDevicesAgg(values): void {
@@ -29,8 +36,10 @@ export class DevicesAggComponent implements OnInit {
       this.device.id = values.id;
       this.device.iplocal = values.iplocal;
       this.device.state = values.state;
+      this.device.type = values.type;
       this.deviceService.insertDevice(this.device);
       console.log('Dispositivo guardado en stock');
+      this.router.navigate(['/admin/devices-stock/devices-list']);
     }
   }
 
