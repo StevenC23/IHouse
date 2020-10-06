@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -27,6 +28,7 @@ import { DevicesListComponent } from './Components/devices-list/devices-list.com
 import { DevicesAggComponent } from './Components/devices-agg/devices-agg.component';
 import { UserDevicesListComponent } from './Components/user-devices-list/user-devices-list.component';
 import { DevicesAssignComponent } from './Components/devices-assign/devices-assign.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { DevicesAssignComponent } from './Components/devices-assign/devices-assi
     AngularFireAuthModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

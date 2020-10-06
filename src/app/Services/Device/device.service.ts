@@ -3,13 +3,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { Device } from 'src/app/Model/device';
 import { map } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DeviceService {
   d: Device;
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: AngularFirestore, private httClient: HttpClient) {}
 
   insertDevice(device: Device): void {
     this.db
@@ -68,7 +69,9 @@ export class DeviceService {
         this.db.doc(`devices/${d[0].uid}`).delete();
       }
     });
+  }
 
-    // this.db.doc(`devices/${id}`).delete();
+  changeStateDevice(id: string): Observable<any> {
+    return this.httClient.get(`http://${id}`);
   }
 }

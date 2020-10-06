@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/Model/user';
+import { DeviceService } from 'src/app/Services/Device/device.service';
 import { UserService } from 'src/app/Services/User/user.service';
 // import '../../../assets/ResourcesJs/interactions';
 
@@ -13,7 +14,10 @@ export class UserDevicesListComponent implements OnInit {
   user: User;
   private subFindUserByEmail: Subscription;
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private deviceService: DeviceService
+  ) {
     this.subFindUserByEmail = this.userService
       .findUserByEmail(localStorage.getItem('email'))
       .subscribe((data) => {
@@ -30,5 +34,8 @@ export class UserDevicesListComponent implements OnInit {
   // tslint:disable-next-line: typedef
   clickk(id: string) {
     console.log('click ' + id);
+    this.deviceService.changeStateDevice(id).subscribe((d) => {
+      console.log(d);
+    });
   }
 }
