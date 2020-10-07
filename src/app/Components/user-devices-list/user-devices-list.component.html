@@ -7,7 +7,7 @@
     <div *ngFor="let u of user" class="user-devices-list-div">
       <div *ngIf="u.devices.length === 0; then noDevices; else devices"></div>
       <ng-template #noDevices>
-        <p>No tiene dispositivos asociados</p>
+        <p class="user-devices-not-devices">No tiene dispositivos asociados</p>
       </ng-template>
       <ng-template #devices>
         <li *ngFor="let device of u.devices">
@@ -15,7 +15,7 @@
             <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
           </div>
           <div class="user-devices-list-name">
-            <h2>{{ device.name }}</h2>
+            <h2>{{ device.type }}</h2>
           </div>
           <div class="user-devices-list-action">
             <div class="action">

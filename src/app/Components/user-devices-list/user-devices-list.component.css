@@ -5,7 +5,10 @@
 .user-devices-title p {
   font-size: 12px;
   margin-top: 10px;
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(63, 61, 86, 0.5);
+}
+.user-devices-title h3 {
+  color: #3f3d56;
 }
 
 .user-devices-list {
@@ -36,7 +39,9 @@
   width: 100px;
   /* border: 1px solid pink; */
 }
-
+.user-devices-not-devices {
+  color: #3f3d56;
+}
 .user-devices-img img {
   width: 100%;
 }
