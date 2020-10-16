@@ -72,6 +72,6 @@ export class DeviceService {
   }
 
   changeStateDevice(id: string): Observable<any> {
-    return this.httClient.get(`http://${id}`);
+    return this.httClient.get(`http://${id}`, { responseType: 'text' });
   }
 }

@@ -11,17 +11,63 @@
       </ng-template>
       <ng-template #devices>
         <li *ngFor="let device of u.devices">
-          <div class="user-devices-img">
-            <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
-          </div>
-          <div class="user-devices-list-name">
-            <h2>{{ device.name }}</h2>
-          </div>
-          <div class="user-devices-list-action">
-            <div class="action">
-              <div class="circle-color" (click)="clickk(device.iplocal)"></div>
+          <div
+            *ngIf="device.type === 'Tira led'; then tiraLed; else deviceN"
+          ></div>
+          <ng-template #tiraLed>
+            <div class="user-devices-img">
+              <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
             </div>
-          </div>
+            <div class="user-devices-list-name">
+              <h2>{{ device.type }}</h2>
+            </div>
+            <div class="user-devices-list-action">
+              <div class="action-tira-led">
+                <div
+                  class="circle-tira-led"
+                  (click)="clickk(device.iplocal)"
+                ></div>
+                <div class="container-colors">
+                  <div
+                    class="circle-color-tira-led amarillo"
+                    (click)="clickk(device.iplocal + 'amarillo')"
+                  ></div>
+                  <div
+                    class="circle-color-tira-led azul"
+                    (click)="clickk(device.iplocal + 'azul')"
+                  ></div>
+                  <div
+                    class="circle-color-tira-led rojo"
+                    (click)="clickk(device.iplocal + 'rojo')"
+                  ></div>
+                  <div
+                    class="circle-color-tira-led verde"
+                    (click)="clickk(device.iplocal + 'verde')"
+                  ></div>
+                  <div
+                    class="circle-color-tira-led rosado"
+                    (click)="clickk(device.iplocal + 'rosado')"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template #deviceN>
+            <div class="user-devices-img">
+              <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
+            </div>
+            <div class="user-devices-list-name">
+              <h2>{{ device.type }}</h2>
+            </div>
+            <div class="user-devices-list-action">
+              <div class="action">
+                <div
+                  class="circle-color"
+                  (click)="clickk(device.iplocal)"
+                ></div>
+              </div>
+            </div>
+          </ng-template>
         </li>
       </ng-template>
     </div>
