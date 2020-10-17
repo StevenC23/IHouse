@@ -102,5 +102,50 @@
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
+/* --------------- tira led ------------------*/
+.action-tira-led {
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.circle-tira-led {
+  margin-top: 5px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.circle-color-tira-led {
+  margin-top: 10px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.container-colors {
+  display: flex;
+  flex-direction: row;
+}
+/* li {
+  border: 1px solid red;
+} */
+
+.amarillo {
+  background: yellow;
+}
+.azul {
+  background: blue;
+}
+.rojo {
+  background: red;
+}
+.verde {
+  background: green;
+}
+.rosado {
+  background: pink;
+}
 /* 
 cable fibra optica precio colombia */
