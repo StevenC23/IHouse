@@ -42,4 +42,8 @@ export class UserListComponent implements OnInit {
       console.log(this.userSearch);
     }
   }
+
+  press(id: string) {
+    console.log(id);
+  }
 }

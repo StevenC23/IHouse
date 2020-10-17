@@ -1,49 +1,49 @@
-<!-- <ul class="user-list">
-  <li *ngFor="let user of userList">
-    <div class="user-list-name">
-      <h3>{{ user.email }}</h3>
-      <p>{{ user.name }}</p>
-    </div>
-    <div
-      *ngIf="user.devices.length === 0; then noDivices; else yesDevices"
-    ></div>
-    <ng-template #noDivices>
-      <div class="user-list-devices">
-        <h2>No devices</h2>
-      </div>
-    </ng-template>
-    <ng-template #yesDevices>
-      <div *ngFor="let device of user.devices" class="user-list-devices">
-        <h2>{{ device.iplocal }}</h2>
-      </div>
-    </ng-template>
-  </li>
-</ul> -->
-
 <form
   [formGroup]="userSearchForm"
   (ngSubmit)="userSearchM(userSearchForm.value)"
 >
-  <input type="text" formControlName="usearch" list="users_list" />
-  <datalist id="users_list">
-    <option *ngFor="let u of userList" value="{{ u.uid }}">
-      {{ u.email }}
-    </option>
-  </datalist>
-  <button [disabled]="userSearchForm.invalid" type="submit">
-    auser search
-  </button>
+  <div class="user-search-form-container">
+    <input
+      type="text"
+      formControlName="usearch"
+      list="users_list"
+      class="user-list-input"
+    />
+    <datalist id="users_list">
+      <option *ngFor="let u of userList" value="{{ u.uid }}">
+        {{ u.email }}
+      </option>
+    </datalist>
+    <button
+      [disabled]="userSearchForm.invalid"
+      type="submit"
+      class="user-search-btn"
+    >
+      User search
+    </button>
+  </div>
 </form>
 
 <div *ngIf="userSearch !== undefined; then devices"></div>
 <ng-template #devices>
   <div *ngIf="userSearch.devices.length === 0; then nd; else d"></div>
   <ng-template #nd>
-    <h3>No devices</h3>
+    <div class="user-search-user">
+      <h2>{{ userSearch.email }}</h2>
+      <h3 class="user-search-user-h3">No devices</h3>
+    </div>
   </ng-template>
   <ng-template #d>
-    <div *ngFor="let device of userSearch.devices" class="user-list-devices">
-      <h2>{{ device.iplocal }}</h2>
+    <div class="user-search-user">
+      <h2>{{ userSearch.email }}</h2>
+      <h2>{{ userSearch.name.toUpperCase() }}</h2>
+      <div *ngFor="let device of userSearch.devices" class="user-list-devices">
+        <h3 class="user-search-user-h3">{{ device.iplocal }}</h3>
+        <div>
+          <h5>{{ device.type }}</h5>
+          <button (click)="press(device.id)">press</button>
+        </div>
+      </div>
     </div>
   </ng-template>
 </ng-template>

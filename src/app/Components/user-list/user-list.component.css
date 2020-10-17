@@ -13,3 +13,31 @@ li {
   flex-direction: row;
   justify-content: space-between;
 }
+.user-search-form-container {
+  display: flex;
+  justify-content: space-between;
+}
+.user-list-input {
+  border: none;
+  background-color: rgb(235, 235, 235);
+  border-radius: 5px;
+  padding: 0px 20px;
+  width: 70%;
+  height: 40px;
+}
+
+.user-search-btn {
+  padding: 5px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.user-search-user {
+  margin: 15px 0px;
+  /* border: 1px solid red; */
+}
+
+.user-search-user-h3 {
+  margin-top: 10px;
+}

@@ -1,5 +1,18 @@
-<app-navbar></app-navbar>
-<H1>ADMIN HOME</H1>
-<a class="link" routerLink="user-list">User list </a> -----
-<a class="link" routerLink="devices-stock">devices in stock list</a>
-<router-outlet> </router-outlet>
+<!-- <app-navbar></app-navbar> -->
+<div class="admin-pg">
+  <div class="admin-pg-title">
+    <H1>ADMIN HOME</H1>
+    <div class="btn-all">
+      <a (click)="logout()">Exit</a>
+    </div>
+  </div>
+  <div class="admin-pg-routers">
+    <div class="btn-all">
+      <a class="link" routerLink="user-list">User list </a>
+    </div>
+    <div class="btn-all">
+      <a class="link" routerLink="devices-stock">devices in stock list</a>
+    </div>
+  </div>
+  <router-outlet> </router-outlet>
+</div>
