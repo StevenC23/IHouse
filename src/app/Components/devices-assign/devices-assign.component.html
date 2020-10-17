@@ -6,11 +6,18 @@
   >
     <h3>User</h3>
     <!-- id="user" -->
-    <select formControlName="user">
+
+    <!-- <select formControlName="user">
       <option *ngFor="let u of users" value="{{ u.uid }}">
         {{ u.email }}
       </option>
-    </select>
+    </select> -->
+    <input type="text" formControlName="user" list="users_list" />
+    <datalist id="users_list">
+      <option *ngFor="let u of users" value="{{ u.uid }}">
+        {{ u.email }}
+      </option>
+    </datalist>
     <h3>Device type</h3>
     <select formControlName="device">
       <option *ngFor="let d of devices" value="{{ d.id }}">

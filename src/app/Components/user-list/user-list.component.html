@@ -1,4 +1,4 @@
-<ul class="user-list">
+<!-- <ul class="user-list">
   <li *ngFor="let user of userList">
     <div class="user-list-name">
       <h3>{{ user.email }}</h3>
@@ -18,4 +18,32 @@
       </div>
     </ng-template>
   </li>
-</ul>
+</ul> -->
+
+<form
+  [formGroup]="userSearchForm"
+  (ngSubmit)="userSearchM(userSearchForm.value)"
+>
+  <input type="text" formControlName="usearch" list="users_list" />
+  <datalist id="users_list">
+    <option *ngFor="let u of userList" value="{{ u.uid }}">
+      {{ u.email }}
+    </option>
+  </datalist>
+  <button [disabled]="userSearchForm.invalid" type="submit">
+    auser search
+  </button>
+</form>
+
+<div *ngIf="userSearch !== undefined; then devices"></div>
+<ng-template #devices>
+  <div *ngIf="userSearch.devices.length === 0; then nd; else d"></div>
+  <ng-template #nd>
+    <h3>No devices</h3>
+  </ng-template>
+  <ng-template #d>
+    <div *ngFor="let device of userSearch.devices" class="user-list-devices">
+      <h2>{{ device.iplocal }}</h2>
+    </div>
+  </ng-template>
+</ng-template>
