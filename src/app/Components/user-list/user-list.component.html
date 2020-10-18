@@ -41,7 +41,13 @@
         <h3 class="user-search-user-h3">{{ device.iplocal }}</h3>
         <div>
           <h5>{{ device.type }}</h5>
-          <button (click)="press(device.id)">press</button>
+          <button
+            (click)="
+              press(userSearch.email, userSearch.uid, device.id, device.type)
+            "
+          >
+            press
+          </button>
         </div>
       </div>
     </div>

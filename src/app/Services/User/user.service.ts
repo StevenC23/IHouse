@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../../Model/user';
 
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Device } from 'src/app/Model/device';
 
@@ -14,6 +14,8 @@ export class UserService {
   devicePro: Device;
   deviceProUid: string;
   listDeviceProv: Device[];
+  userPro: User;
+  private sub: Subscription;
 
   constructor(
     private db: AngularFirestore,
@@ -92,5 +94,57 @@ export class UserService {
           });
         })
       );
+  }
+
+  //
+  //
+  //
+  deleteDeviceByUser(email: string, uidU: string, idD: string): void {
+    let devicesArr: Device[];
+    let deviceDelete: Device;
+    let userPro: User;
+    let ind: number;
+    console.log('----------------------------------------------------');
+    this.sub = this.findUserByEmail(email).subscribe((d) => {
+      console.log('*******************************************************');
+      userPro = d[0];
+      devicesArr = userPro.devices;
+
+      ind = 0;
+      console.log(ind);
+
+      if (devicesArr[ind] !== undefined) {
+        while (idD !== devicesArr[ind].id) {
+          ind = ind + 1;
+          console.log(ind);
+        }
+
+        if (idD === devicesArr[ind].id) {
+          deviceDelete = devicesArr[ind];
+          console.log(deviceDelete);
+          devicesArr.splice(ind, 1);
+          console.log(devicesArr);
+
+          if (devicesArr === undefined) {
+            devicesArr = [];
+          }
+          this.db
+            .collection('users')
+            .doc(uidU)
+            .update({
+              devices: devicesArr,
+            })
+            .then(() => {
+              console.log('/////////////////////////////////////////');
+              console.log('eliminó device');
+              deviceDelete.iplocal = 'Not Assign';
+              deviceDelete.state = 'false';
+              this.deviceService.insertDevice(deviceDelete);
+              console.log('agrega device a la lista de devices');
+            })
+            .catch((e) => console.log('error', e));
+        }
+      }
+    });
   }
 }

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../../Model/user';
 import { UserService } from 'src/app/Services/User/user.service';
 import { Subscription } from 'rxjs';
+import { Device } from 'src/app/Model/device';
 
 @Component({
   selector: 'app-user-list',
@@ -31,19 +32,25 @@ export class UserListComponent implements OnInit {
   ngOnDestroy(): void {
     this.subFindUsers.unsubscribe();
   }
+  // tslint:disable-next-line: typedef
   userSearchM(values) {
-    this.iterator = 0;
+    this.subFindUsers = this.userService.findUsers().subscribe((data) => {
+      this.userList = data;
 
-    while (values.usearch !== this.userList[this.iterator].uid) {
-      this.iterator = this.iterator + 1;
-    }
-    if (values.usearch === this.userList[this.iterator].uid) {
-      this.userSearch = this.userList[this.iterator];
-      console.log(this.userSearch);
-    }
+      this.iterator = 0;
+
+      while (values.usearch !== this.userList[this.iterator].uid) {
+        this.iterator = this.iterator + 1;
+      }
+      if (values.usearch === this.userList[this.iterator].uid) {
+        this.userSearch = this.userList[this.iterator];
+        console.log(this.userSearch);
+      }
+    });
   }
 
-  press(id: string) {
-    console.log(id);
+  // tslint:disable-next-line: typedef
+  press(idU: string, uidU: string, idD: string, type: string) {
+    this.userService.deleteDeviceByUser(idU, uidU, idD);
   }
 }
