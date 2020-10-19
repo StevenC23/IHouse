@@ -18,7 +18,7 @@
         <ng-template #devices>
           <li *ngFor="let device of devicesList">
             <div
-              *ngIf="device.type === 'Tira led'; then tiraLed; else deviceN"
+              *ngIf="device.type === 'Tira Led'; then tiraLed; else deviceN"
             ></div>
             <ng-template #tiraLed>
               <div class="user-devices-img">

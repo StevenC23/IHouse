@@ -5,6 +5,7 @@
   <div class="user-search-form-container">
     <input
       type="text"
+      placeholder="User"
       formControlName="uSearch"
       list="users_list"
       class="user-list-input"
@@ -24,18 +25,29 @@
   </div>
 </form>
 
-<ul>
+<ul class="user-list-container">
   <div *ngIf="devicesList === undefined; then lUndefined; else list"></div>
   <ng-template #lUndefined>
-    <p>Seleccione un usuario</p>
+    <p class="user-list-msg">Select a user</p>
   </ng-template>
   <ng-template #list>
     <div *ngIf="devicesList.length === 0; then nDevices; else devices"></div>
-    <ng-template #nDevices> El usuario no tiene dispositivos </ng-template>
+    <ng-template #nDevices>
+      <p class="user-list-msg">User has no devices</p>
+    </ng-template>
     <ng-template #devices>
       <li *ngFor="let device of devicesList">
-        {{ device.id }} -- {{ device.user }} -- {{ device.iplocal }}
-        <button (click)="press(device.id)">press</button>
+        <div class="user-list-data">
+          <h3>{{ device.type }}</h3>
+          <p>{{ device.iplocal }}</p>
+          <!-- <p>{{ device.id }}</p> -->
+        </div>
+        <button
+          (click)="press(device.id)"
+          class="btn-btn-all user-list-data-btn"
+        >
+          Delete
+        </button>
       </li>
     </ng-template>
   </ng-template>
