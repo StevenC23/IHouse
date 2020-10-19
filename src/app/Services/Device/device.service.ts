@@ -24,21 +24,6 @@ export class DeviceService {
       .catch((err) => console.log(err));
   }
 
-  findDevices(): Observable<Device[]> {
-    return this.db
-      .collection('devices')
-      .snapshotChanges()
-      .pipe(
-        map((actions) => {
-          return actions.map((a) => {
-            const data = a.payload.doc.data() as Device;
-            data.uid = a.payload.doc.id;
-            return data;
-          });
-        })
-      );
-  }
-
   findDeviceById(id: string): Observable<any> {
     return this.db
       .collection('devices', (ref) => ref.where('id', '==', id))
@@ -93,16 +78,29 @@ export class DeviceService {
   // ***********************************************************
   // ***********************************************************
   //
-
-  findDevicesNotAssign(): Observable<Device[]> {
+  findDevices(): Observable<Device[]> {
     return this.db
-      .collection('devices', (ref) => ref.where('user', '==', 'Not Assign'))
+      .collection('devices')
       .snapshotChanges()
       .pipe(
         map((actions) => {
           return actions.map((a) => {
             const data = a.payload.doc.data() as Device;
             data.uid = a.payload.doc.id;
+            return data;
+          });
+        })
+      );
+  }
+
+  getDevicesByUser(email: string): Observable<any> {
+    return this.db
+      .collection('devices', (ref) => ref.where('user', '==', email))
+      .snapshotChanges()
+      .pipe(
+        map((action) => {
+          return action.map((a) => {
+            const data = a.payload.doc.data() as Device;
             return data;
           });
         })
@@ -121,14 +119,15 @@ export class DeviceService {
     return div;
   }
 
-  getDevicesByUser(email: string): Observable<any> {
+  findDevicesNotAssign(): Observable<Device[]> {
     return this.db
-      .collection('devices', (ref) => ref.where('user', '==', email))
+      .collection('devices', (ref) => ref.where('user', '==', 'Not Assign'))
       .snapshotChanges()
       .pipe(
-        map((action) => {
-          return action.map((a) => {
+        map((actions) => {
+          return actions.map((a) => {
             const data = a.payload.doc.data() as Device;
+            data.uid = a.payload.doc.id;
             return data;
           });
         })

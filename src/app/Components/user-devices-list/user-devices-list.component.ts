@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { User } from 'src/app/Model/user';
+import { Device } from 'src/app/Model/device';
 import { DeviceService } from 'src/app/Services/Device/device.service';
-import { UserService } from 'src/app/Services/User/user.service';
-// import '../../../assets/ResourcesJs/interactions';
 
 @Component({
   selector: 'app-user-devices-list',
@@ -11,24 +9,21 @@ import { UserService } from 'src/app/Services/User/user.service';
   styleUrls: ['./user-devices-list.component.css'],
 })
 export class UserDevicesListComponent implements OnInit {
-  user: User;
-  private subFindUserByEmail: Subscription;
+  devicesList: Device[];
+  private subDevicesList: Subscription;
 
-  constructor(
-    private userService: UserService,
-    private deviceService: DeviceService
-  ) {
-    this.subFindUserByEmail = this.userService
-      .findUserByEmail(localStorage.getItem('email'))
-      .subscribe((data) => {
-        this.user = data;
+  constructor(private deviceService: DeviceService) {
+    this.subDevicesList = this.deviceService
+      .getDevicesByUser(localStorage.getItem('email'))
+      .subscribe((d) => {
+        this.devicesList = d;
       });
   }
 
   ngOnInit(): void {}
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy(): void {
-    this.subFindUserByEmail.unsubscribe();
+    this.subDevicesList.unsubscribe();
   }
 
   // tslint:disable-next-line: typedef
