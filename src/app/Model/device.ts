@@ -4,4 +4,5 @@ export class Device {
   iplocal: string;
   state: string;
   type: string;
+  user: string;
 }

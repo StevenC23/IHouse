@@ -10,7 +10,7 @@
       class="user-list-input"
     />
     <datalist id="users_list">
-      <option *ngFor="let u of userList" value="{{ u.uid }}">
+      <option *ngFor="let u of userList" value="{{ u.email }}">
         {{ u.email }}
       </option>
     </datalist>
@@ -24,7 +24,23 @@
   </div>
 </form>
 
-<div *ngIf="userSearch !== undefined; then devices"></div>
+<ul>
+  <div *ngIf="devicesList === undefined; then lUndefined; else list"></div>
+  <ng-template #lUndefined>
+    <p>Seleccione un usuario</p>
+  </ng-template>
+  <ng-template #list>
+    <div *ngIf="devicesList.length === 0; then nDevices; else devices"></div>
+    <ng-template #nDevices> El usuario no tiene dispositivos </ng-template>
+    <ng-template #devices>
+      <li *ngFor="let device of devicesList">
+        {{ device.id }} -- {{ device.user }} -- {{ device.iplocal }}
+        <button (click)="press(device.id)">press</button>
+      </li>
+    </ng-template>
+  </ng-template>
+</ul>
+<!-- <div *ngIf="userSearch !== undefined; then devices"></div>
 <ng-template #devices>
   <div *ngIf="userSearch.devices.length === 0; then nd; else d"></div>
   <ng-template #nd>
@@ -52,4 +68,4 @@
       </div>
     </div>
   </ng-template>
-</ng-template>
+</ng-template> -->

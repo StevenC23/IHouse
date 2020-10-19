@@ -27,9 +27,7 @@ export class UserDevicesListComponent implements OnInit {
 
   ngOnInit(): void {}
   // tslint:disable-next-line: use-lifecycle-interface
-  ngOnDestroy(): void {
-    this.subFindUserByEmail.unsubscribe();
-  }
+  ngOnDestroy(): void {}
 
   // tslint:disable-next-line: typedef
   clickk(id: string) {

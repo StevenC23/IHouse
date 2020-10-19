@@ -2,6 +2,7 @@ import { DeviceService } from './../../Services/Device/device.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Device } from 'src/app/Model/device';
+
 import * as uuid from 'uuid';
 import { Router } from '@angular/router';
 
@@ -24,6 +25,7 @@ export class DevicesAggComponent implements OnInit {
       iplocal: ['Not Assign'],
       state: ['false', Validators.required],
       type: ['', Validators.required],
+      user: ['Not Assign'],
     });
   }
 
@@ -37,6 +39,7 @@ export class DevicesAggComponent implements OnInit {
       this.device.iplocal = values.iplocal;
       this.device.state = values.state;
       this.device.type = values.type;
+      this.device.user = values.user;
       this.deviceService.insertDevice(this.device);
       console.log('Dispositivo guardado en stock');
       this.router.navigate(['/admin/devices-stock/devices-list']);
