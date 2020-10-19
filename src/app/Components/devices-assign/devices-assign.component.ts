@@ -27,13 +27,15 @@ export class DevicesAssignComponent implements OnInit {
       this.users = data;
     });
 
-    this.subFindDevices = this.deviceService.findDevices().subscribe((data) => {
-      this.devices = data;
-    });
+    this.subFindDevices = this.deviceService
+      .findDevicesNotAssign()
+      .subscribe((data) => {
+        this.devices = data;
+      });
 
     this.assignDeviceForm = this.builder.group({
       device: ['', Validators.required],
-      user: ['', Validators.required],
+      email: ['', Validators.required],
       iplocal: ['', Validators.required],
     });
   }
@@ -47,31 +49,22 @@ export class DevicesAssignComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   btnAssignDevice(values) {
-    // console.log(values.user);
+    console.log(values.email);
     console.log(values.device);
-    // console.log(values.iplocal);
-    // this.userService.insertDeviceUser(
-    //   values.user,
-    //   values.device,
-    //   values.iplocal
-    // );
-    //
-    //
-    //
-    // const devicee = this.userService.getDevicesById(values.device);
-    // console.log(typeof devicee);
-    // devicee.then((doc) => {
-    //   console.log(doc);
-    // });
-    //
-    //
-    //
-    // funciona
-    let devii = this.userService.getDevicesById(values.device);
+    console.log(values.iplocal);
+    this.deviceService.assignDeviceUser(
+      values.email,
+      values.device,
+      values.iplocal
+    );
 
-    devii.then((d) => {
-      console.log(d);
-    });
+    // tslint:disable-next-line: prefer-const
+    // let devii = this.deviceService.getDevicesById(values.device);
+    // console.log(devii);
+
+    // devii.then((d) => {
+    //   console.log(d);
+    // });
     //
   }
 }

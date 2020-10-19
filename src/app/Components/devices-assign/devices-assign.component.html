@@ -5,16 +5,9 @@
     (ngSubmit)="btnAssignDevice(assignDeviceForm.value)"
   >
     <h3>User</h3>
-    <!-- id="user" -->
-
-    <!-- <select formControlName="user">
-      <option *ngFor="let u of users" value="{{ u.uid }}">
-        {{ u.email }}
-      </option>
-    </select> -->
-    <input type="text" formControlName="user" list="users_list" />
+    <input type="text" formControlName="email" list="users_list" />
     <datalist id="users_list">
-      <option *ngFor="let u of users" value="{{ u.uid }}">
+      <option *ngFor="let u of users" value="{{ u.email }}">
         {{ u.email }}
       </option>
     </datalist>
@@ -24,7 +17,6 @@
         {{ d.type }}
       </option>
     </select>
-
     <h3>Ip Local</h3>
     <input type="text" formControlName="iplocal" />
 

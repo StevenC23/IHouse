@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Device } from 'src/app/Model/device';
 
-import firebase from 'firebase/app';
+import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 
 @Injectable({
@@ -97,6 +97,12 @@ export class UserService {
       );
   }
 
+  //
+  // ***********************************************************
+  // ***********************************************************
+  // ***********************************************************
+  //
+
   async getDevicesById(id: string): Promise<Device> {
     let div: Device;
     const device = await firebase
@@ -104,7 +110,7 @@ export class UserService {
       .collection('devices')
       .where('id', '==', id)
       .get();
-    div = device.docs[0].data();
+    div = device.docs[0].data() as Device;
     return div;
   }
 }

@@ -11,14 +11,15 @@ import { DeviceService } from 'src/app/Services/Device/device.service';
 export class DevicesListComponent implements OnInit {
   deviceList: Device[];
   public subFindDevices: Subscription;
-  constructor(private deviceService: DeviceService) {}
-
-  ngOnInit(): void {
-    this.subFindDevices = this.deviceService.findDevices().subscribe((data) => {
-      this.deviceList = data;
-      // console.log(this.deviceList);
-    });
+  constructor(private deviceService: DeviceService) {
+    this.subFindDevices = this.deviceService
+      .findDevicesNotAssign()
+      .subscribe((data) => {
+        this.deviceList = data;
+      });
   }
+
+  ngOnInit(): void {}
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy(): void {
     console.log('ngOnDestroy');

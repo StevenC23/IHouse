@@ -5,6 +5,9 @@ import { Device } from 'src/app/Model/device';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -83,5 +86,74 @@ export class DeviceService {
 
   changeStateDevice(id: string): Observable<any> {
     return this.httClient.get(`http://${id}`, { responseType: 'text' });
+  }
+
+  //
+  // ***********************************************************
+  // ***********************************************************
+  // ***********************************************************
+  //
+
+  findDevicesNotAssign(): Observable<Device[]> {
+    return this.db
+      .collection('devices', (ref) => ref.where('user', '==', 'Not Assign'))
+      .snapshotChanges()
+      .pipe(
+        map((actions) => {
+          return actions.map((a) => {
+            const data = a.payload.doc.data() as Device;
+            data.uid = a.payload.doc.id;
+            return data;
+          });
+        })
+      );
+  }
+
+  async getDevicesById(id: string): Promise<Device> {
+    let div: Device;
+    const device = await firebase
+      .firestore()
+      .collection('devices')
+      .where('id', '==', id)
+      .get();
+    div = device.docs[0].data() as Device;
+    div.uid = device.docs[0].id;
+    return div;
+  }
+
+  getDevicesByUser(email: string): Observable<any> {
+    return this.db
+      .collection('devices', (ref) => ref.where('user', '==', email))
+      .snapshotChanges()
+      .pipe(
+        map((action) => {
+          return action.map((a) => {
+            const data = a.payload.doc.data() as Device;
+            return data;
+          });
+        })
+      );
+  }
+
+  // tslint:disable-next-line: typedef
+  assignDeviceUser(email: string, device: string, ip: string) {
+    const deviceById = this.getDevicesById(device);
+    deviceById.then((d) => {
+      this.db.collection('devices').doc(d.uid).update({
+        iplocal: ip,
+        user: email,
+      });
+    });
+  }
+
+  // tslint:disable-next-line: typedef
+  deleteDeviceUser(id: string) {
+    const deviceById = this.getDevicesById(id);
+    deviceById.then((d) => {
+      this.db.collection('devices').doc(d.uid).update({
+        iplocal: 'Not Assign',
+        user: 'Not Assign',
+      });
+    });
   }
 }
