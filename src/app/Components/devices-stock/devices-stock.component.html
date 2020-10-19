@@ -1,7 +1,19 @@
-<h2>Devices list</h2>
-<a class="link" routerLink="devices-list">devices list</a>
--------
-<a class="link" routerLink="devices-agg">agg devices</a>
--------
-<a class="link" routerLink="devices-assign">assign devices</a>
+<div class="space"></div>
+<div class="devices-stock-links">
+  <div>
+    <a class="link" routerLink="devices-list" routerLinkActive="link-active">
+      Device List
+    </a>
+  </div>
+  <div>
+    <a class="link" routerLink="devices-agg" routerLinkActive="link-active"
+      >Add Device</a
+    >
+  </div>
+  <div>
+    <a class="link" routerLink="devices-assign" routerLinkActive="link-active"
+      >Assign Device</a
+    >
+  </div>
+</div>
 <router-outlet></router-outlet>

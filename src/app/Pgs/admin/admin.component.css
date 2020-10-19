@@ -7,9 +7,19 @@
   align-items: center;
   justify-content: space-between;
 }
+.admin-pg-title h1 {
+  color: #3f3d56;
+}
 
 .admin-pg-routers {
   display: flex;
   margin: 30px 0px;
   justify-content: space-between;
+}
+.admin-pg-title div a {
+  color: white;
+}
+
+.admin-pg-routers div a {
+  color: white;
 }

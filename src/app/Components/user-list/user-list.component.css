@@ -2,17 +2,7 @@
   width: 100vw;
   list-style: none;
 }
-li {
-  /* border: 1px solid black; */
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.438);
-  border-radius: 5px;
-  width: 80%;
-  margin: 20px auto;
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+
 .user-search-form-container {
   display: flex;
   justify-content: space-between;
@@ -40,4 +30,35 @@ li {
 
 .user-search-user-h3 {
   margin-top: 10px;
+}
+
+/* ------------------------ Despues de buscar usuario -------------------------- */
+
+.user-list-msg {
+  margin-top: 10px;
+  color: #3f3d56;
+}
+
+li {
+  /* border: 1px solid black; */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.user-list-data-btn {
+  width: 25%;
+}
+
+li .user-list-data {
+  color: #3f3d56;
+}
+
+.user-list-container {
+  height: 60vh;
+  overflow-y: auto;
 }
