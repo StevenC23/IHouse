@@ -47,13 +47,31 @@ export class DevicesAssignComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   btnAssignDevice(values) {
-    console.log(values.user);
+    // console.log(values.user);
     console.log(values.device);
-    console.log(values.iplocal);
-    this.userService.insertDeviceUser(
-      values.user,
-      values.device,
-      values.iplocal
-    );
+    // console.log(values.iplocal);
+    // this.userService.insertDeviceUser(
+    //   values.user,
+    //   values.device,
+    //   values.iplocal
+    // );
+    //
+    //
+    //
+    // const devicee = this.userService.getDevicesById(values.device);
+    // console.log(typeof devicee);
+    // devicee.then((doc) => {
+    //   console.log(doc);
+    // });
+    //
+    //
+    //
+    // funciona
+    let devii = this.userService.getDevicesById(values.device);
+
+    devii.then((d) => {
+      console.log(d);
+    });
+    //
   }
 }

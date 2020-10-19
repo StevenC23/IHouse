@@ -1,4 +1,4 @@
-import { observable, Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { Device } from 'src/app/Model/device';
@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class DeviceService {
+  subDevice: Subscription;
+  subop: Subscription;
   d: Device;
   constructor(private db: AngularFirestore, private httClient: HttpClient) {}
 
@@ -64,11 +66,19 @@ export class DeviceService {
   }
 
   deleteDevice(id: string): void {
-    this.findDeviceByIdd(id).subscribe((d) => {
-      if (d[0]) {
-        this.db.doc(`devices/${d[0].uid}`).delete();
+    this.subDevice = this.findDeviceByIdd(id).subscribe(
+      (d) => {
+        if (d[0]) {
+          this.db.doc(`devices/${d[0].uid}`).delete();
+        }
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        this.subDevice.unsubscribe();
       }
-    });
+    );
   }
 
   changeStateDevice(id: string): Observable<any> {
