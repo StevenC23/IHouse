@@ -1,10 +1,19 @@
 <div>
-  <h2>stock</h2>
-  <ul>
+  <h2>Stock</h2>
+  <ul class="devices-list-ul">
     <li *ngFor="let device of deviceList">
-      {{ device.type }} -- {{ device.iplocal }} -- {{ device.id }} --
-      {{ device.user }}
-      <button (click)="deleteDevice(device.id)">Delete</button>
+      <div class="data">
+        <h4>{{ device.type }}</h4>
+        <p>{{ device.id }}</p>
+      </div>
+      <div>
+        <button
+          (click)="deleteDevice(device.id)"
+          class="btn-btn-all devices-list-btn"
+        >
+          Delete
+        </button>
+      </div>
     </li>
   </ul>
 </div>

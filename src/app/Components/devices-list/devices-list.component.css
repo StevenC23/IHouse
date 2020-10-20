@@ -1,3 +1,14 @@
 li {
-  border: 1px solid black;
+  margin-top: 20px;
+  list-style: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.devices-list-ul {
+  height: 60vh;
+  overflow-y: auto;
+}
+
+.devices-list-btn {
+  padding: 5px;
 }
