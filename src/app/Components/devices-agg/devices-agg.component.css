@@ -1,0 +1,17 @@
+.device-agg-slect {
+  border: none;
+  background-color: rgb(235, 235, 235);
+  border-radius: 5px;
+  padding: 0px 20px;
+  width: 40%;
+  height: 40px;
+}
+.devices-agg-btn {
+  padding: 5px;
+  width: 80px;
+  height: 40px;
+  margin-left: 10px;
+}
+.device-agg-container {
+  margin-top: 20px;
+}

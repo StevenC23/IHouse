@@ -1,26 +1,34 @@
-<p>devices-assign works!</p>
 <div>
   <form
     [formGroup]="assignDeviceForm"
     (ngSubmit)="btnAssignDevice(assignDeviceForm.value)"
   >
-    <h3>User</h3>
-    <input type="text" formControlName="email" list="users_list" />
+    <h2>User</h2>
+    <input
+      type="text"
+      formControlName="email"
+      list="users_list"
+      class="devices-assign-input"
+    />
     <datalist id="users_list">
       <option *ngFor="let u of users" value="{{ u.email }}">
         {{ u.email }}
       </option>
     </datalist>
-    <h3>Device type</h3>
-    <select formControlName="device">
+    <h2>Device type</h2>
+    <select formControlName="device" class="device-assign-slect">
       <option *ngFor="let d of devices" value="{{ d.id }}">
         {{ d.type }}
       </option>
     </select>
-    <h3>Ip Local</h3>
-    <input type="text" formControlName="iplocal" />
+    <h2>Ip Local</h2>
+    <input type="text" formControlName="iplocal" class="devices-assign-input" />
 
-    <button [disabled]="assignDeviceForm.invalid" type="submit">
+    <button
+      [disabled]="assignDeviceForm.invalid"
+      type="submit"
+      class="btn-btn-all device-assign-btn"
+    >
       assign device
     </button>
   </form>
