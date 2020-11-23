@@ -10,4 +10,9 @@ export const environment = {
     appId: '1:982513507886:web:2136d756adc630348f49bf',
     measurementId: 'G-E9WXZQ7XGF',
   },
+  mqtt: {
+    server: 'ioticos.org',
+    protocol: 'wss',
+    port: 1883,
+  },
 };

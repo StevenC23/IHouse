@@ -14,6 +14,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 
 import { environment } from '../environments/environment';
+
 import { HomeComponent } from './Pgs/home/home.component';
 import { LoginPgComponent } from './Pgs/login-pg/login-pg.component';
 import { RegisterPgComponent } from './Pgs/register-pg/register-pg.component';
@@ -28,7 +29,16 @@ import { DevicesListComponent } from './Components/devices-list/devices-list.com
 import { DevicesAggComponent } from './Components/devices-agg/devices-agg.component';
 import { UserDevicesListComponent } from './Components/user-devices-list/user-devices-list.component';
 import { DevicesAssignComponent } from './Components/devices-assign/devices-assign.component';
-import { from } from 'rxjs';
+
+import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
+import { PruebaMqttComponent } from './Components/prueba-mqtt/prueba-mqtt.component';
+
+const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname: 'ioticos.org',
+  port: 1883,
+  protocol: 'wss' === 'wss' ? 'wss' : 'ws',
+  path: 'X2cu5HdBcwGknQC',
+};
 
 @NgModule({
   declarations: [
@@ -50,6 +60,7 @@ import { from } from 'rxjs';
     DevicesAggComponent,
     UserDevicesListComponent,
     DevicesAssignComponent,
+    PruebaMqttComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +71,7 @@ import { from } from 'rxjs';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     HttpClientModule,
+    MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
   ],
   providers: [],
   bootstrap: [AppComponent],
