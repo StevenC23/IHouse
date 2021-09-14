@@ -28,7 +28,6 @@ export class LogueadoGuard implements CanActivate {
     ) {
       return true;
     } else {
-      console.log('No esta logueado porfavor loguese');
       this.router.navigate(['./login']);
       return false;
     }

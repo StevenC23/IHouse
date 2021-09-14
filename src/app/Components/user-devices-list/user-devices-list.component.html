@@ -4,11 +4,11 @@
     <p>Some of you conected devices</p>
   </div>
   <ul class="user-devices-list">
-    <div *ngIf="devicesList !== undefined; then nUndefined"></div>
+    <div *ngIf="artefactosList !== undefined; then nUndefined"></div>
     <ng-template #nUndefined>
       <div class="user-devices-list-div">
         <div
-          *ngIf="devicesList.length === 0; then noDevices; else devices"
+          *ngIf="artefactosList.length === 0; then noDevices; else devices"
         ></div>
         <ng-template #noDevices>
           <p class="user-devices-not-devices">
@@ -16,11 +16,11 @@
           </p>
         </ng-template>
         <ng-template #devices>
-          <li *ngFor="let device of devicesList">
+          <li *ngFor="let device of artefactosList">
             <div
-              *ngIf="device.type === 'Tira Led'; then tiraLed; else deviceN"
+              *ngIf="device; then deviceN"
             ></div>
-            <ng-template #tiraLed>
+            <!-- <ng-template #tiraLed>
               <div class="user-devices-img">
                 <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
               </div>
@@ -57,19 +57,20 @@
                   </div>
                 </div>
               </div>
-            </ng-template>
+            </ng-template> -->
             <ng-template #deviceN>
               <div class="user-devices-img">
                 <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
               </div>
               <div class="user-devices-list-name">
-                <h2>{{ device.type }}</h2>
+                <h2>{{ device.nombreTipoArtefacto }}</h2>
+                <p>{{device.codigo}}</p>
               </div>
               <div class="user-devices-list-action">
                 <div class="action">
                   <div
                     class="circle-color"
-                    (click)="clickk(device.iplocal)"
+                    (click)="clickk(device.url)"
                   ></div>
                 </div>
               </div>

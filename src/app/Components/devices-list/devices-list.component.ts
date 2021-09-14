@@ -20,16 +20,13 @@ export class DevicesListComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  // tslint:disable-next-line: use-lifecycle-interface
+
   ngOnDestroy(): void {
-    console.log('ngOnDestroy');
 
     this.subFindDevices.unsubscribe();
   }
 
-  // tslint:disable-next-line: typedef
   deleteDevice(id: string) {
-    console.log(id);
     this.deviceService.deleteDevice(id);
   }
 }

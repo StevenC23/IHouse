@@ -1,35 +1,38 @@
 <div>
-  <form
-    [formGroup]="assignDeviceForm"
-    (ngSubmit)="btnAssignDevice(assignDeviceForm.value)"
-  >
+  <form [formGroup]="assignDeviceForm" (ngSubmit)="btnAssignDevice(assignDeviceForm.value)">
     <h2>User</h2>
-    <input
-      type="text"
-      formControlName="email"
-      list="users_list"
-      class="devices-assign-input"
-    />
+    <input type="text" formControlName="usuario" list="users_list" class="devices-assign-input"/>
     <datalist id="users_list">
-      <option *ngFor="let u of users" value="{{ u.email }}">
-        {{ u.email }}
+      <option *ngFor="let u of usuarios" value="{{ u.codigo }}">
+        {{u.nombre}}
       </option>
     </datalist>
+
     <h2>Device type</h2>
-    <select formControlName="device" class="device-assign-slect">
+    <!-- <select formControlName="device" class="device-assign-slect">
       <option *ngFor="let d of devices" value="{{ d.id }}">
         {{ d.type }}
       </option>
-    </select>
-    <h2>Ip Local</h2>
-    <input type="text" formControlName="iplocal" class="devices-assign-input" />
+    </select> -->
+    <input type="text" formControlName="device" list="device_list" class="devices-assign-input"/>
+    <datalist id="device_list">
+      <option *ngFor="let a of artefactos" value="{{ a.tiarId }}">
+        {{ a.nombre }}
+      </option>
+    </datalist>
+
+    <h2>Codigo</h2>
+    <input type="text" formControlName="codigo" class="devices-assign-input" />
+
+    <h2>Url</h2>
+    <input type="text" formControlName="url" class="devices-assign-input" />
 
     <button
       [disabled]="assignDeviceForm.invalid"
       type="submit"
       class="btn-btn-all device-assign-btn"
     >
-      assign device
+      Assign device
     </button>
   </form>
 </div>

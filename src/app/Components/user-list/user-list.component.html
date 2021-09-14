@@ -1,7 +1,4 @@
-<form
-  [formGroup]="userSearchForm"
-  (ngSubmit)="userSearchM(userSearchForm.value)"
->
+<form [formGroup]="userSearchForm" (ngSubmit)="userSearchM(userSearchForm.value)">
   <div class="user-search-form-container">
     <input
       type="text"
@@ -11,8 +8,8 @@
       class="user-list-input"
     />
     <datalist id="users_list">
-      <option *ngFor="let u of userList" value="{{ u.email }}">
-        {{ u.email }}
+      <option *ngFor="let u of userList" value="{{u.usuaId}}">
+        {{ u.codigo }}
       </option>
     </datalist>
     <button
@@ -20,7 +17,7 @@
       type="submit"
       class="user-search-btn"
     >
-      User search
+      Buscar
     </button>
   </div>
 </form>
@@ -28,25 +25,25 @@
 <ul class="user-list-container">
   <div *ngIf="devicesList === undefined; then lUndefined; else list"></div>
   <ng-template #lUndefined>
-    <p class="user-list-msg">Select a user</p>
+    <p class="user-list-msg">Seleccione un usuraio</p>
   </ng-template>
   <ng-template #list>
     <div *ngIf="devicesList.length === 0; then nDevices; else devices"></div>
     <ng-template #nDevices>
-      <p class="user-list-msg">User has no devices</p>
+      <p class="user-list-msg">El usuario no tiene artefactos</p>
     </ng-template>
     <ng-template #devices>
       <li *ngFor="let device of devicesList">
         <div class="user-list-data">
-          <h3>{{ device.type }}</h3>
-          <p>{{ device.iplocal }}</p>
+          <h3>{{ device.nombreTipoArtefacto }}</h3>
+          <p>{{ device.url }}</p>
           <!-- <p>{{ device.id }}</p> -->
         </div>
         <button
-          (click)="press(device.id)"
+          (click)="borrar(device)"
           class="btn-btn-all user-list-data-btn"
         >
-          Delete
+          Borrar
         </button>
       </li>
     </ng-template>

@@ -32,6 +32,7 @@ import { DevicesAssignComponent } from './Components/devices-assign/devices-assi
 
 import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
 import { PruebaMqttComponent } from './Components/prueba-mqtt/prueba-mqtt.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: 'ioticos.org',
@@ -72,6 +73,9 @@ const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     AngularFireDatabaseModule,
     HttpClientModule,
     MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
+    NoopAnimationsModule,
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent],

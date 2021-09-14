@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
@@ -23,10 +24,12 @@ export class HomeComponent implements OnInit {
         console.log('Usuario deslogueado');
         localStorage.removeItem('email');
         localStorage.removeItem('rol');
+        localStorage.removeItem('name');
+        localStorage.removeItem('usuaId');
         this.router.navigate(['/login']);
       })
       .catch(() => {
-        alert('no se pudo desloguear');
+        Swal.fire("no se pudo desloguear");
       });
   }
 }

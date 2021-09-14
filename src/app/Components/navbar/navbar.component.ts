@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/Services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -23,7 +24,7 @@ export class NavbarComponent implements OnInit {
         this.router.navigate(['/login']);
       })
       .catch(() => {
-        alert('no se pudo desloguear');
+        Swal.fire("No es posible el deslogueo");
       });
   }
 }

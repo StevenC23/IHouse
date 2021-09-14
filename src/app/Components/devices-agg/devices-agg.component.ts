@@ -41,7 +41,6 @@ export class DevicesAggComponent implements OnInit {
       this.device.type = values.type;
       this.device.user = values.user;
       this.deviceService.insertDevice(this.device);
-      console.log('Dispositivo guardado en stock');
       this.router.navigate(['/admin/devices-stock/devices-list']);
     }
   }

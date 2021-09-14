@@ -34,7 +34,6 @@ export class PruebaMqttComponent implements OnInit {
       .subscribe((data: IMqttMessage) => {
         // tslint:disable-next-line: prefer-const
         let item = JSON.parse(data.payload.toString());
-        console.log(item);
         this.events.push(item);
       });
   }

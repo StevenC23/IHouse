@@ -1,3 +1,8 @@
+import Swal from 'sweetalert2';
+import { TipoArtefactoService } from './../../ServicesBackend/tipo-artefacto.service';
+import { ArtefactoService } from './../../ServicesBackend/artefacto.service';
+import { Artefacto } from './../../Model/artefacto';
+import { UsuarioService } from './../../ServicesBackend/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -5,6 +10,7 @@ import { Device } from 'src/app/Model/device';
 import { User } from 'src/app/Model/user';
 import { DeviceService } from 'src/app/Services/Device/device.service';
 import { UserService } from 'src/app/Services/User/user.service';
+import { Usuario } from 'src/app/Model/usuario';
 
 @Component({
   selector: 'app-devices-assign',
@@ -14,6 +20,10 @@ import { UserService } from 'src/app/Services/User/user.service';
 export class DevicesAssignComponent implements OnInit {
   users: User[];
   devices: Device[];
+
+  usuarios: Usuario[];
+  artefactos: Artefacto[];
+  
   public subFindUsers: Subscription;
   public subFindDevices: Subscription;
   assignDeviceForm: FormGroup;
@@ -21,50 +31,73 @@ export class DevicesAssignComponent implements OnInit {
   constructor(
     private userService: UserService,
     private deviceService: DeviceService,
-    private builder: FormBuilder
-  ) {
-    this.subFindUsers = this.userService.findUsers().subscribe((data) => {
-      this.users = data;
-    });
+    private builder: FormBuilder,
+    private usuarioService: UsuarioService,
+    private tipoArtefactoService: TipoArtefactoService,
+    private artefactoService: ArtefactoService,
+  ) {}
 
-    this.subFindDevices = this.deviceService
-      .findDevicesNotAssign()
-      .subscribe((data) => {
-        this.devices = data;
-      });
+  ngOnInit(): void {
+    // this.subFindUsers = this.userService.findUsers().subscribe((data) => {
+    //   this.users = data;
+    // });
+    let usuario: Usuario = new Usuario();
+    this.subFindUsers = this.usuarioService.consultarUsuarios(usuario).subscribe(d=>{
+      if(d){
+        this.usuarios = d;
+      }
+    })
+
+    this.subFindDevices = this.tipoArtefactoService.consultarTipoArtefactosActivos().subscribe(d=>{
+      if(d){
+        this.artefactos = d;
+      }
+    })
 
     this.assignDeviceForm = this.builder.group({
       device: ['', Validators.required],
-      email: ['', Validators.required],
-      iplocal: ['', Validators.required],
+      usuario: ['', Validators.required],
+      url: ['', Validators.required],
+      codigo: ['',Validators.required]
     });
   }
 
-  ngOnInit(): void {}
-  // tslint:disable-next-line: use-lifecycle-interface
   ngOnDestroy(): void {
     this.subFindUsers.unsubscribe();
     this.subFindDevices.unsubscribe();
   }
 
-  // tslint:disable-next-line: typedef
   btnAssignDevice(values) {
-    console.log(values.email);
-    console.log(values.device);
-    console.log(values.iplocal);
-    this.deviceService.assignDeviceUser(
-      values.email,
-      values.device,
-      values.iplocal
-    );
 
-    // tslint:disable-next-line: prefer-const
-    // let devii = this.deviceService.getDevicesById(values.device);
-    // console.log(devii);
+  let artefacto: Artefacto = new Artefacto();
+  
+  artefacto.codigoUsuario = values.usuario;
+  artefacto.tiarId_TipoArtefacto = values.device;
+  artefacto.url= values.url;
+  artefacto.codigo = values.codigo;
 
-    // devii.then((d) => {
-    //   console.log(d);
-    // });
-    //
+  this.usuarioService.consultarUsuariosPorCodigoOrm(values.usuario).subscribe(d=>{
+    if(d){
+      
+      artefacto.usuaId_Usuario = d.usuaId;
+
+      this.artefactoService.crearArtefacto(artefacto).subscribe(d=>{
+        if(d){
+          this.assignDeviceForm.reset();
+          Swal.fire("El artefacto ha sido asignado correctamente");
+        }
+      })
+    }
+  })
+
+  
+
+  
+
   }
+  
+  
+
+  // this.artefactoService.crearArtefacto().subscribe
+
 }
