@@ -15,16 +15,19 @@ export class NavbarComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   logout() {
-    this.authService
-      .logout()
-      .then(() => {
-        console.log('Usuario deslogueado');
-        localStorage.removeItem('email');
-        localStorage.removeItem('rol');
-        this.router.navigate(['/login']);
-      })
-      .catch(() => {
-        Swal.fire("No es posible el deslogueo");
-      });
+
+    console.log('Usuario deslogueado');
+    localStorage.removeItem('email');
+    localStorage.removeItem('rol');
+    this.router.navigate(['/login']);
+
+    // this.authService
+    //   .logout()
+    //   .then(() => {
+        
+    //   })
+    //   .catch(() => {
+    //     Swal.fire("No es posible el deslogueo");
+    //   });
   }
 }

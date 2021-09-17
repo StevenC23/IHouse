@@ -1,42 +1,48 @@
 <div class="register-div">
   <div class="register-title">
-    <h1>Register</h1>
+    <h1>Registrar</h1>
   </div>
   <div class="register-form">
     <form
       [formGroup]="registerForm"
       (ngSubmit)="btnRegister(registerForm.value)"
     >
-      <h2 class="register-email">Email</h2>
+      <h2 class="register-email">Correo</h2>
       <input
         formControlName="email"
         type="email"
-        placeholder="Personal or valid email"
+        placeholder="Correo valido"
       />
-      <h2 class="register-name">Name</h2>
-      <input formControlName="name" type="text" placeholder="Name" />
-      <h2 class="register-pss">Password</h2>
+
+      <h2 class="register-name">Nombre</h2>
+      <input formControlName="name" type="text" placeholder="Nombre" />
+
+      <h2 class="register-name">Dirección</h2>
+      <input formControlName="direccion" type="text" placeholder="Dirección" />
+
+      <h2 class="register-pss">Contraseña</h2>
       <input
         formControlName="password"
         type="password"
-        placeholder="Password valid up 6 characters"
+        placeholder="Contraseña valida mayor a 6 caracteres"
       />
-      <h2 class="register-pss2">Password</h2>
+      
+      <h2 class="register-pss2">Contraseña</h2>
       <input
         formControlName="passwordd"
         type="password"
-        placeholder="Repeat password"
+        placeholder="Repetir Contraseña"
       />
       <button
         class="btn-btn-all register-btn"
         [disabled]="registerForm.invalid"
         type="submit"
       >
-        Register
+        Registrar
       </button>
     </form>
   </div>
   <div class="register-login-btn">
-    <a routerLink="/login">if you have an account, let's login</a>
+    <a routerLink="/login">Si tienes una cuenta, vamos a ingresar</a>
   </div>
 </div>

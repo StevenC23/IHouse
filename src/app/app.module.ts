@@ -34,12 +34,14 @@ import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
 import { PruebaMqttComponent } from './Components/prueba-mqtt/prueba-mqtt.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
-  hostname: 'ioticos.org',
-  port: 1883,
-  protocol: 'wss' === 'wss' ? 'wss' : 'ws',
-  path: 'X2cu5HdBcwGknQC',
-};
+export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname:'3.16.75.9',
+  // hostname: 'ec2-3-16-75-9.us-east-2.compute.amazonaws.com',
+  // hostname: '172.31.11.52',
+  port: 9001,
+  path: '/mqtt',
+  protocol: 'ws'
+}
 
 @NgModule({
   declarations: [

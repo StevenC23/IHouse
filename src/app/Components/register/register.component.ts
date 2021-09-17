@@ -27,8 +27,10 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.builder.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', Validators.required],
+      direccion: ['', Validators.required],
       password: ['', Validators.required],
       passwordd: ['', Validators.required],
+
     });
   }
 
@@ -41,30 +43,32 @@ export class RegisterComponent implements OnInit {
 
         usuario.nombre = values.name;
         usuario.codigo = values.email;
-        usuario.direccion = "NR";
+        usuario.direccion = values.direccion;
+        usuario.pss = values.password;
         usuario.tiusId_TipoUsuario = 2;
 
-            this.authService
-              .createUser(values.email, values.password)
-              .then(() => {
+        this.usuarioService.crearUsuario(usuario).subscribe(d=>{
+          if(d){
+            
+            Swal.fire("Usuario creado con exito");
+            this.router.navigate(['/login']);
 
-                this.usuarioService.crearUsuario(usuario).subscribe(d=>{
-                  if(d){
-                    
-                    Swal.fire("Usuario creado con exito");
-                    this.router.navigate(['/login']);
-
-                    }
-                  })
-              })
-              .catch((err) => {
-                if(err.message == "The email address is already in use by another account."){
-                  Swal.fire("Ya existe una cuenta registrada con el email "+values.email);
-                }
-              });
+            }
+        }, error => {
+          let mensaje = error.error.error[0];
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: mensaje
+          });
+        });
 
       }else{
-        Swal.fire("La contraseña no coincide");
+        Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: "La contraseña no coincide"
+            });
       }
       
     }

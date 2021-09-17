@@ -51,6 +51,13 @@ export class UserListComponent implements OnInit {
         
         this.userList = d;
       }
+    }, error => {
+      let mensaje = error.error.error[0];
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: mensaje
+      });
     })
   }
 
@@ -62,6 +69,13 @@ export class UserListComponent implements OnInit {
       if(d){
         this.devicesList = d;
       }
+    }, error => {
+      let mensaje = error.error.error[0];
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: mensaje
+      });
     })
   }
 
@@ -75,6 +89,13 @@ export class UserListComponent implements OnInit {
         Swal.fire("El artefacto ha sido eliminado correctamente");
         this.userSearchM({uSearch:device.usuaId_Usuario});
       }
+    }, error => {
+      let mensaje = error.error.error[0];
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: mensaje
+      });
     })
 
   }

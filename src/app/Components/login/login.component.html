@@ -1,28 +1,28 @@
 <div class="login-div">
   <div class="login-title">
-    <h1>Let's get started</h1>
-    <p>Sign in with your own account or sign in with Google acount</p>
+    <h1>Vamos a iniciar!</h1>
+    <p>Ingresa con tu cuenta registrada</p>
   </div>
   <div class="login-form">
     <form [formGroup]="loginForm" (ngSubmit)="btnLogin(loginForm.value)">
-      <p class="login-email">Email:</p>
+      <p class="login-email">Correo:</p>
       <input
         formControlName="email"
         type="email"
-        placeholder="Personal or valid email"
+        placeholder="Correo valido"
       />
-      <p class="login-pss">Password:</p>
+      <p class="login-pss">Contraseña:</p>
       <input
         formControlName="password"
         type="password"
-        placeholder="Password valid up 6 characters"
+        placeholder="Contraseña mayor a 6 caracteres"
       />
       <button class="login-btn" [disabled]="loginForm.invalid" type="submit">
-        Sign In
+        Ingresar
       </button>
     </form>
   </div>
   <div class="login-register-btn">
-    <a routerLink="/register">if you don't have an account, let's create one</a>
+    <a routerLink="/register">Si no tienes cuenta, vamos a crear una</a>
   </div>
 </div>

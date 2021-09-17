@@ -11,5 +11,6 @@ export class Usuario {
 	tiusId_TipoUsuario: number;
 	artefactosList: string;
 	artefactoDTOs: Artefacto[];
+	pss: string;
 
 }

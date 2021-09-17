@@ -27,20 +27,26 @@ export class LoginComponent implements OnInit {
   ) {
     this.loginForm = this.builder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required,Validators.minLength(6)]],
     });
   }
 
   btnLogin(values): void {
+    
     if (this.loginForm.valid) {
-      this.authService
-        .login(values.email, values.password)
-        .then(() => {
 
-          //busco el usuario que si existe en el backend
+      let usuario: Usuario = new Usuario();
+      usuario.codigo = values.email;
+      usuario.pss = values.password;
+
+      console.log(usuario);
+      
+      this.usuarioService.validarUsuarioYContraseñaCorrecta(usuario).subscribe(data=>{
+        if(data){
+
+          // busco el usuario que si existe en el backend
           this.usuarioService.consultarUsuariosPorCodigoOrm(values.email).subscribe(d=>{
             if(d){
-              
               localStorage.setItem('email', d.codigo);
               if(d.tiusId_TipoUsuario == 1){
                 localStorage.setItem('rol', "ADMIN");
@@ -56,12 +62,32 @@ export class LoginComponent implements OnInit {
               } else {
                 this.router.navigate(['/home']);
               }
+              
             }
+          }, error => {
+            let mensaje = error.error.error[0];
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: mensaje
+            });
           })
-        })
-        .catch(() => {
-          Swal.fire("El usuario o la contraseña no son validos");
+
+        }
+        else{
+          Swal.fire("El usuario o contraseña son incorrectos");
+        }
+        
+      }, error => {
+        let mensaje = error.error.error[0];
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: mensaje
         });
+      })
+
+      
     }
   }
 

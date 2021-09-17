@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+import { MqttService } from 'ngx-mqtt';
 import { ArtefactoService } from './../../ServicesBackend/artefacto.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -18,6 +20,7 @@ export class UserDevicesListComponent implements OnInit {
   constructor(
     private deviceService: DeviceService,
     private artefactoService: ArtefactoService,
+    private mqtt: MqttService
     ) {}
 
   ngOnInit(): void {
@@ -32,6 +35,13 @@ export class UserDevicesListComponent implements OnInit {
         console.log(d);
         this.artefactosList = d;
       }
+    }, error => {
+      let mensaje = error.error.error[0];
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: mensaje
+      });
     })
 
   }
@@ -46,5 +56,11 @@ export class UserDevicesListComponent implements OnInit {
     // this.deviceService.changeStateDevice(id).subscribe((d) => {
     //   console.log(d);
     // });
+  }
+
+  sendmsg(url): void {
+    console.log("Envio mensaje");
+    console.log("s@s.com/"+url);
+    this.mqtt.unsafePublish("s@s.com/"+url, "Mensaje enviado desde la aplicacion principal", { qos: 1, retain: true });
   }
 }

@@ -14,18 +14,21 @@ export class AdminComponent implements OnInit {
   ngOnInit(): void {}
 
   logout() {
-    this.authService
-      .logout()
-      .then(() => {
-        console.log('Usuario deslogueado');
-        localStorage.removeItem('email');
-        localStorage.removeItem('rol');
-        localStorage.removeItem('name');
-        localStorage.removeItem('usuaId');
-        this.router.navigate(['/login']);
-      })
-      .catch(() => {
-        Swal.fire("no se pudo desloguear");
-      });
+
+    console.log('Usuario deslogueado');
+    localStorage.removeItem('email');
+    localStorage.removeItem('rol');
+    localStorage.removeItem('name');
+    localStorage.removeItem('usuaId');
+    this.router.navigate(['/login']);
+
+    // this.authService
+    //   .logout()
+    //   .then(() => {
+        
+    //   })
+    //   .catch(() => {
+    //     Swal.fire("no se pudo desloguear");
+    //   });
   }
 }

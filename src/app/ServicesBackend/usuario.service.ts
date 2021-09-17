@@ -36,5 +36,9 @@ export class UsuarioService {
   public consultarUsuariosPorCodigoOrm(codigo: String): Observable<any> {
     return this.httpClient.post(this.url + 'consultarUsuariosPorCodigoOrm', codigo);
   }
+
+  public validarUsuarioYContraseñaCorrecta(usuario): Observable<any>{
+    return this.httpClient.post(this.url + 'validarUsuarioYContraseñaCorrecta',usuario );
+  }
 }
  

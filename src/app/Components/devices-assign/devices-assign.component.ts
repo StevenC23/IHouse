@@ -46,12 +46,26 @@ export class DevicesAssignComponent implements OnInit {
       if(d){
         this.usuarios = d;
       }
+    }, error => {
+      let mensaje = error.error.error[0];
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: mensaje
+      });
     })
 
     this.subFindDevices = this.tipoArtefactoService.consultarTipoArtefactosActivos().subscribe(d=>{
       if(d){
         this.artefactos = d;
       }
+    }, error => {
+      let mensaje = error.error.error[0];
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: mensaje
+      });
     })
 
     this.assignDeviceForm = this.builder.group({
@@ -86,8 +100,22 @@ export class DevicesAssignComponent implements OnInit {
           this.assignDeviceForm.reset();
           Swal.fire("El artefacto ha sido asignado correctamente");
         }
+      }, error => {
+        let mensaje = error.error.error[0];
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: mensaje
+        });
       })
     }
+  }, error => {
+    let mensaje = error.error.error[0];
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: mensaje
+    });
   })
 
   
