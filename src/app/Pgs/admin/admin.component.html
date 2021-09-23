@@ -3,15 +3,18 @@
   <div class="admin-pg-title">
     <H1>ADMIN HOME</H1>
     <div class="btn-all">
-      <a (click)="logout()">Exit</a>
+      <a (click)="home()">Home</a>
+    </div>
+    <div class="btn-all">
+      <a (click)="logout()">Salir</a>
     </div>
   </div>
   <div class="admin-pg-routers">
     <div class="btn-all">
-      <a class="link" routerLink="user-list">User list </a>
+      <a class="link" routerLink="user-list">Lista usuarios </a>
     </div>
     <div class="btn-all">
-      <a class="link" routerLink="devices-stock/devices-assign">Assign device</a>
+      <a class="link" routerLink="devices-stock/devices-assign">Asignar artefacto</a>
     </div>
   </div>
   <router-outlet> </router-outlet>

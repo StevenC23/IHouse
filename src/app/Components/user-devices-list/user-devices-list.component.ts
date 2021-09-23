@@ -14,7 +14,9 @@ import { Artefacto } from 'src/app/Model/artefacto';
 })
 export class UserDevicesListComponent implements OnInit {
   devicesList: Device[];
-  artefactosList: Artefacto[];
+  artefactosListS: Artefacto[];
+  artefactosListT: Artefacto[];
+  artefactosListTL: Artefacto[];
   private subDevicesList: Subscription;
 
   constructor(
@@ -33,7 +35,29 @@ export class UserDevicesListComponent implements OnInit {
     this.subDevicesList = this.artefactoService.consultarArtefactosPorUsuario(parseInt(localStorage.getItem('usuaId'))).subscribe(d=>{
       if(d){
         console.log(d);
-        this.artefactosList = d;
+
+        const filteredS = d.filter(function(element){
+          return element.nombreTipoArtefacto == "Switch";
+        });
+
+        this.artefactosListS = filteredS;
+
+        const filteredT = d.filter(function(element){
+          return element.nombreTipoArtefacto == "Toma corriente";
+        });
+
+        this.artefactosListT = filteredT;
+
+        const filteredTL = d.filter(function(element){
+          return element.nombreTipoArtefacto == "Tira led";
+        });
+
+        this.artefactosListTL = filteredTL;
+
+        console.log(this.artefactosListS);
+        console.log(this.artefactosListT);
+        console.log(this.artefactosListTL);
+
       }
     }, error => {
       let mensaje = error.error.error[0];
@@ -58,9 +82,9 @@ export class UserDevicesListComponent implements OnInit {
     // });
   }
 
-  sendmsg(url): void {
+  sendmsg(device): void {
     console.log("Envio mensaje");
-    console.log("s@s.com/"+url);
-    this.mqtt.unsafePublish("s@s.com/"+url, "Mensaje enviado desde la aplicacion principal", { qos: 1, retain: true });
+    console.log("s@s.com/"+device.codigo+"/"+device.url);
+    this.mqtt.unsafePublish("s@s.com/"+device.codigo+"/"+device.url, "1", { qos: 1, retain: true });
   }
 }

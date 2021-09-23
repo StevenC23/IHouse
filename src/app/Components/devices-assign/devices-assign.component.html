@@ -1,6 +1,6 @@
 <div>
   <form [formGroup]="assignDeviceForm" (ngSubmit)="btnAssignDevice(assignDeviceForm.value)">
-    <h2>User</h2>
+    <h2>Usuario</h2>
     <input type="text" formControlName="usuario" list="users_list" class="devices-assign-input"/>
     <datalist id="users_list">
       <option *ngFor="let u of usuarios" value="{{ u.codigo }}">
@@ -8,7 +8,7 @@
       </option>
     </datalist>
 
-    <h2>Device type</h2>
+    <h2>Tipo de dispositivo</h2>
     <!-- <select formControlName="device" class="device-assign-slect">
       <option *ngFor="let d of devices" value="{{ d.id }}">
         {{ d.type }}
@@ -32,7 +32,7 @@
       type="submit"
       class="btn-btn-all device-assign-btn"
     >
-      Assign device
+      Asignar artefacto
     </button>
   </form>
 </div>

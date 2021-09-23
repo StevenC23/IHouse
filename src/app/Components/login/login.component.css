@@ -69,3 +69,18 @@
   color: #3f3d56;
   margin: 0px auto;
 }
+
+.login-register-btnRC {
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  background-color: rgb(235, 235, 235);
+  display: flex;
+}
+
+.login-register-btnRC a {
+  text-decoration: none;
+  color: #3f3d56;
+  margin: 0px auto;
+}

@@ -40,5 +40,10 @@ export class UsuarioService {
   public validarUsuarioYContraseñaCorrecta(usuario): Observable<any>{
     return this.httpClient.post(this.url + 'validarUsuarioYContraseñaCorrecta',usuario );
   }
+  
+  public actualizarEnviarContraseña(correo): Observable<any>{
+    return this.httpClient.post(this.url + 'actualizarEnviarContraseña',correo );
+  }
+
 }
  

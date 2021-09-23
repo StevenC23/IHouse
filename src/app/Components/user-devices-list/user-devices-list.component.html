@@ -1,151 +1,125 @@
 <div class="user-devices-div">
   <div class="user-devices-title">
-    <h3>Devices</h3>
-    <p>Some of you conected devices</p>
+    <h3>Artefactos</h3>
+    <p>Algunos de tus dispositivos conectados</p>
   </div>
   <ul class="user-devices-list">
-    <div *ngIf="artefactosList !== undefined; then nUndefined"></div>
-    <ng-template #nUndefined>
+    <div *ngIf="artefactosListS !== undefined; then nUndefinedS"></div>
+    <ng-template #nUndefinedS>
       <div class="user-devices-list-div">
         <div
-          *ngIf="artefactosList.length === 0; then noDevices; else devices"
+          *ngIf="artefactosListS.length === 0; then noDevicesS; else devicesS"
         ></div>
-        <ng-template #noDevices>
+        <ng-template #noDevicesS>
           <p class="user-devices-not-devices">
-            No tiene dispositivos asociados
+            No tiene suiches asociados
           </p>
         </ng-template>
-        <ng-template #devices>
-          <li *ngFor="let device of artefactosList">
-            <div
-              *ngIf="device; then deviceN"
-            ></div>
-            <!-- <ng-template #tiraLed>
-              <div class="user-devices-img">
-                <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
-              </div>
-              <div class="user-devices-list-name">
-                <h2>{{ device.type }}</h2>
-              </div>
-              <div class="user-devices-list-action">
-                <div class="action-tira-led">
-                  <div
-                    class="circle-tira-led"
-                    (click)="clickk(device.iplocal)"
-                  ></div>
-                  <div class="container-colors">
-                    <div
-                      class="circle-color-tira-led amarillo"
-                      (click)="clickk(device.iplocal + 'amarillo')"
-                    ></div>
-                    <div
-                      class="circle-color-tira-led azul"
-                      (click)="clickk(device.iplocal + 'azul')"
-                    ></div>
-                    <div
-                      class="circle-color-tira-led rojo"
-                      (click)="clickk(device.iplocal + 'rojo')"
-                    ></div>
-                    <div
-                      class="circle-color-tira-led verde"
-                      (click)="clickk(device.iplocal + 'verde')"
-                    ></div>
-                    <div
-                      class="circle-color-tira-led rosado"
-                      (click)="clickk(device.iplocal + 'rosado')"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </ng-template> -->
-            <ng-template #deviceN>
+        <ng-template #devicesS>
+          <li *ngFor="let device of artefactosListS">
+          <div *ngIf="device">
+            <div >
               <div class="user-devices-img">
                 <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
               </div>
               <div class="user-devices-list-name">
                 <h2>{{ device.nombreTipoArtefacto }}</h2>
-                <p>{{device.codigo}}</p>
+                <p>{{device.codigo}}/{{device.url}}</p>
               </div>
               <div class="user-devices-list-action">
                 <div class="action">
                   <div
                     class="circle-color"
-                    (click)="sendmsg(device.url)"
+                    (click)="sendmsg(device)"
                   ></div>
                 </div>
               </div>
-            </ng-template>
+            </div>
+          </div>
           </li>
         </ng-template>
       </div>
     </ng-template>
   </ul>
-</div>
 
-<!-- <div *ngFor="let u of user" class="user-devices-list-div">
-  <div *ngIf="u.devices.length === 0; then noDevices; else devices"></div>
-  <ng-template #noDevices>
-    <p class="user-devices-not-devices">No tiene dispositivos asociados</p>
-  </ng-template>
-  <ng-template #devices>
-    <li *ngFor="let device of u.devices">
-      <div
-        *ngIf="device.type === 'Tira led'; then tiraLed; else deviceN"
-      ></div>
-      <ng-template #tiraLed>
-        <div class="user-devices-img">
-          <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
-        </div>
-        <div class="user-devices-list-name">
-          <h2>{{ device.type }}</h2>
-        </div>
-        <div class="user-devices-list-action">
-          <div class="action-tira-led">
-            <div
-              class="circle-tira-led"
-              (click)="clickk(device.iplocal)"
-            ></div>
-            <div class="container-colors">
-              <div
-                class="circle-color-tira-led amarillo"
-                (click)="clickk(device.iplocal + 'amarillo')"
-              ></div>
-              <div
-                class="circle-color-tira-led azul"
-                (click)="clickk(device.iplocal + 'azul')"
-              ></div>
-              <div
-                class="circle-color-tira-led rojo"
-                (click)="clickk(device.iplocal + 'rojo')"
-              ></div>
-              <div
-                class="circle-color-tira-led verde"
-                (click)="clickk(device.iplocal + 'verde')"
-              ></div>
-              <div
-                class="circle-color-tira-led rosado"
-                (click)="clickk(device.iplocal + 'rosado')"
-              ></div>
+  <ul class="user-devices-list">
+    <div *ngIf="artefactosListT !== undefined; then nUndefinedT"></div>
+    <ng-template #nUndefinedT>
+      <div class="user-devices-list-div">
+        <div
+          *ngIf="artefactosListT.length === 0; then noDevicesT; else devicesT"
+        ></div>
+        <ng-template #noDevicesT>
+          <p class="user-devices-not-devices">
+            No tiene toma corrientes asociados
+          </p>
+        </ng-template>
+        <ng-template #devicesT>
+          <li *ngFor="let device of artefactosListT">
+          <div *ngIf="device">
+            <div>
+              <div class="user-devices-img">
+                <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
+              </div>
+              <div class="user-devices-list-name">
+                <h3>{{ device.nombreTipoArtefacto }}</h3>
+                <p>{{device.codigo}}/{{device.url}}</p>
+              </div>
+              <div class="user-devices-list-action">
+                <div class="action">
+                  <div
+                    class="circle-color"
+                    (click)="sendmsg(device)"
+                  ></div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </ng-template>
-      <ng-template #deviceN>
-        <div class="user-devices-img">
-          <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
-        </div>
-        <div class="user-devices-list-name">
-          <h2>{{ device.type }}</h2>
-        </div>
-        <div class="user-devices-list-action">
-          <div class="action">
-            <div
-              class="circle-color"
-              (click)="clickk(device.iplocal)"
-            ></div>
+          </li>
+        </ng-template>
+      </div>
+    </ng-template>
+  </ul>
+
+  <ul class="user-devices-list">
+    <div *ngIf="artefactosListTL !== undefined; then nUndefinedTL"></div>
+    <ng-template #nUndefinedTL>
+      <div class="user-devices-list-div">
+        <div
+          *ngIf="artefactosListTL.length === 0; then noDevicesTL; else devicesTL"
+        ></div>
+        <ng-template #noDevicesTL>
+          <p class="user-devices-not-devices">
+            No tiene tiras led asociadas
+          </p>
+        </ng-template>
+        <ng-template #devicesTL>
+          <li *ngFor="let device of artefactosListTL">
+          <div *ngIf="device">
+            <div >
+              <div class="user-devices-img">
+                <img src="../../../assets/Imgs/bombilla.png" alt="bombillo" />
+              </div>
+              <div class="user-devices-list-name">
+                <h2>{{ device.nombreTipoArtefacto }}</h2>
+                <p>{{device.codigo}}/{{device.url}}</p>
+              </div>
+              <div class="user-devices-list-action">
+                <div class="action">
+                  <div
+                    class="circle-color"
+                    (click)="sendmsg(device)"
+                  ></div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </ng-template>
-    </li>
-  </ng-template>
-</div> -->
+          </li>
+        </ng-template>
+      </div>
+    </ng-template>
+  </ul>
+
+
+
+</div>

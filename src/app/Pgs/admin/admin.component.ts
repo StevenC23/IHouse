@@ -31,4 +31,8 @@ export class AdminComponent implements OnInit {
     //     Swal.fire("no se pudo desloguear");
     //   });
   }
+
+  home(){
+    this.router.navigate(['/home']);
+  }
 }

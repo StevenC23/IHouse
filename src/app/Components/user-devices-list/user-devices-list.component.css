@@ -37,6 +37,8 @@
 
 .user-devices-img {
   width: 100px;
+  justify-self: center;
+  align-self: center;
   /* border: 1px solid pink; */
 }
 .user-devices-not-devices {
@@ -44,10 +46,14 @@
 }
 .user-devices-img img {
   width: 100%;
+  justify-self: center;
+  align-self: center;
 }
 
 .user-devices-list-name {
   margin-top: 10px;
+  justify-self: center;
+  align-self: center;
 }
 
 .user-devices-list-action {
