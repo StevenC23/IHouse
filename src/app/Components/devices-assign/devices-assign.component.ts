@@ -118,14 +118,6 @@ export class DevicesAssignComponent implements OnInit {
     });
   })
 
-  
-
-  
-
   }
   
-  
-
-  // this.artefactoService.crearArtefacto().subscribe
-
 }
