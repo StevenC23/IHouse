@@ -83,8 +83,9 @@ export class UserDevicesListComponent implements OnInit {
   }
 
   sendmsg(device): void {
+    let correo = localStorage.getItem('email');
     console.log("Envio mensaje");
-    console.log("s@s.com/"+device.codigo+"/"+device.url);
-    this.mqtt.unsafePublish("s@s.com/"+device.codigo+"/"+device.url, "1", { qos: 1, retain: true });
+    console.log(correo+"/"+device.codigo+"/"+device.url);
+    this.mqtt.unsafePublish(correo+"/"+device.codigo+"/"+device.url, "1", { qos: 1, retain: true });
   }
 }
