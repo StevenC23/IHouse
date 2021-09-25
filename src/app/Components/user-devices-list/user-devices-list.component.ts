@@ -34,7 +34,6 @@ export class UserDevicesListComponent implements OnInit {
     //   });
     this.subDevicesList = this.artefactoService.consultarArtefactosPorUsuario(parseInt(localStorage.getItem('usuaId'))).subscribe(d=>{
       if(d){
-        console.log(d);
 
         const filteredS = d.filter(function(element){
           return element.nombreTipoArtefacto == "Switch";
@@ -54,10 +53,6 @@ export class UserDevicesListComponent implements OnInit {
 
         this.artefactosListTL = filteredTL;
 
-        console.log(this.artefactosListS);
-        console.log(this.artefactosListT);
-        console.log(this.artefactosListTL);
-
       }
     }, error => {
       let mensaje = error.error.error[0];
@@ -74,18 +69,8 @@ export class UserDevicesListComponent implements OnInit {
     this.subDevicesList.unsubscribe();
   }
 
-  // tslint:disable-next-line: typedef
-  clickk(id: string) {
-    console.log('click ' + id);
-    // this.deviceService.changeStateDevice(id).subscribe((d) => {
-    //   console.log(d);
-    // });
-  }
-
   sendmsg(device): void {
     let correo = localStorage.getItem('email');
-    console.log("Envio mensaje");
-    console.log(correo+"/"+device.codigo+"/"+device.url);
     this.mqtt.unsafePublish(correo+"/"+device.codigo+"/"+device.url, "1", { qos: 1, retain: true });
   }
 }

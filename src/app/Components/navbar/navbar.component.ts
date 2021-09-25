@@ -15,8 +15,6 @@ export class NavbarComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   logout() {
-
-    console.log('Usuario deslogueado');
     localStorage.removeItem('email');
     localStorage.removeItem('rol');
     this.router.navigate(['/login']);

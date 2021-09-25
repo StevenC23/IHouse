@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
 
   logout() {
 
-    console.log('Usuario deslogueado');
     localStorage.removeItem('email');
     localStorage.removeItem('rol');
     localStorage.removeItem('name');
@@ -38,10 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   subscribeNewTopic(topic: string): void {
-    console.log('Me subscribo al topico ' + topic);
     this.mqtt.observe(topic).subscribe((message: IMqttMessage) => {
-      console.log(message.payload.toString());
     });
-    // this.logMsg('subscribed to topic: ' + this.topicname)
   }
 }

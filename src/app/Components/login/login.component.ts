@@ -38,8 +38,6 @@ export class LoginComponent implements OnInit {
       let usuario: Usuario = new Usuario();
       usuario.codigo = values.email;
       usuario.pss = values.password;
-
-      console.log(usuario);
       
       this.usuarioService.validarUsuarioYContraseñaCorrecta(usuario).subscribe(data=>{
         if(data){
@@ -57,7 +55,6 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('usuaId',d.usuaId);
 
               if (d.tiusId_TipoUsuario == 1) {
-                console.log('Redirecciona a admin');
                 this.router.navigate(['/admin']);
               } else {
                 this.router.navigate(['/home']);
@@ -106,19 +103,15 @@ export class LoginComponent implements OnInit {
       confirmButtonText: 'Enviar',
       showLoaderOnConfirm: true,
       preConfirm: (correo) => {
-        console.log(correo);
         this.usuarioService.actualizarEnviarContraseña(correo).subscribe(d=>{
-          console.log(d);
           
           if(d){
-            console.log(d);
             Swal.fire({
               title: "Contraseña enviada al correo"
             })
           }
         }, error => {
           msg = error.error.error[0];
-          console.log(msg);
           if(msg){
             Swal.fire({
               title: msg
@@ -127,81 +120,10 @@ export class LoginComponent implements OnInit {
         })
         
       },
-      // allowOutsideClick: () => !Swal.isLoading()
       
     }).then((result) => {
-      console.log(result);
 
     })
-
-
-
-
-
-
-
-
-
-
-    // const hola :{ value: password } = 
-
-    // const { value : password} = Swal.fire({
-    //   title: 'Enter your password',
-    //   input: 'password',
-    //   inputLabel: 'Password',
-    //   inputPlaceholder: 'Enter your password',
-    // })
-
-    // const { value: password } = await Swal.fire({
-    //   title: 'Enter your password',
-    //   input: 'password',
-    //   inputLabel: 'Password',
-    //   inputPlaceholder: 'Enter your password',
-
-    // })
-    
-    // console.log(password);
-    
-    // if (password) {
-    //   Swal.fire(`Entered password: ${password}`)
-    // }
-
-
-
-
-    // Swal.fire({
-    //   title: 'Submit your Github username',
-    //   input: 'text',
-    //   inputAttributes: {
-    //     autocapitalize: 'off'
-    //   },
-    //   showCancelButton: true,
-    //   confirmButtonText: 'Look up',
-    //   showLoaderOnConfirm: true,
-    //   preConfirm: (login) => {
-    //     return fetch(`//api.github.com/users/${login}`)
-    //       .then(response => {
-    //         if (!response.ok) {
-    //           throw new Error(response.statusText)
-    //         }
-    //         return response.json()
-    //       })
-    //       .catch(error => {
-    //         Swal.showValidationMessage(
-    //           `Request failed: ${error}`
-    //         )
-    //       })
-    //   },
-    //   allowOutsideClick: () => !Swal.isLoading()
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     Swal.fire({
-    //       title: `${result.value.login}'s avatar`,
-    //       imageUrl: result.value.avatar_url
-    //     })
-    //   }
-    // })
-
 
   }
 }
