@@ -14,8 +14,8 @@ export const environment = {
     appId: '1:982513507886:web:2136d756adc630348f49bf',
     measurementId: 'G-E9WXZQ7XGF',
   },
-  url: 'http://127.0.0.1:9090/api/v1/',
-  // url: 'https://backendbdg.herokuapp.com/api/v1/',
+  // url: 'http://127.0.0.1:9090/api/v1/',
+  url: 'https://backendbdg.herokuapp.com/api/v1/',
   
 };
 

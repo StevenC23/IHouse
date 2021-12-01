@@ -71,6 +71,24 @@ export class UserDevicesListComponent implements OnInit {
 
   sendmsg(device): void {
     let correo = localStorage.getItem('email');
-    this.mqtt.unsafePublish(correo+"/"+device.codigo+"/"+device.url, "1", { qos: 1, retain: true });
+    this.mqtt.unsafePublish(correo, "1", { qos: 1, retain: true });
+  }
+
+  sendmsgTL(device): void {
+    let correo = localStorage.getItem('email');
+    this.mqtt.unsafePublish(correo, "2", { qos: 1, retain: true });
+  }
+
+  sendmsgRosado(device): void {
+    let correo = localStorage.getItem('email');
+    this.mqtt.unsafePublish(correo, "3", { qos: 1, retain: true });
+  }
+  sendmsgAzul(device): void {
+    let correo = localStorage.getItem('email');
+    this.mqtt.unsafePublish(correo, "4", { qos: 1, retain: true });
+  }
+  sendmsgArcoiris(device): void {
+    let correo = localStorage.getItem('email');
+    this.mqtt.unsafePublish(correo, "5", { qos: 1, retain: true });
   }
 }

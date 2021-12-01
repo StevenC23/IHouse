@@ -35,7 +35,7 @@ import { PruebaMqttComponent } from './Components/prueba-mqtt/prueba-mqtt.compon
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
-  hostname:'18.221.196.39',
+  hostname:'ec2-3-145-18-115.us-east-2.compute.amazonaws.com',
   // hostname: 'ec2-3-16-75-9.us-east-2.compute.amazonaws.com',
   // hostname: '172.31.11.52',
   port: 9001,

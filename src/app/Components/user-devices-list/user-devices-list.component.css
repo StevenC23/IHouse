@@ -155,3 +155,29 @@
 }
 /* 
 cable fibra optica precio colombia */
+
+.circle-color-tl {
+  /* margin: 2px; */
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.tlros{
+  background-color: rgb(255, 192, 203) !important;
+}
+.tlazu{
+  background-color: rgb(0, 0, 255) !important;
+}
+.tlarc{
+  /* background-color: linear-gradient(red, yellow,blue) !important; */
+  background-color: rgb(128, 0, 128) !important;
+}
+/* .action{
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  scroll-behavior: smooth;
+} */
